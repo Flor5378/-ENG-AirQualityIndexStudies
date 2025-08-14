@@ -1,2 +1,4 @@
-# -ENG-AirQualityIndexStudies
-Personal Project over Air Quality Index (AQI) Analysis and Machine Learning Prediction Implementation
+# Air Quality Index Analysis and Prediction
+---
+*By Florian GROLLEAU* Sciences Po Saint-Germain-en-Laye
+
