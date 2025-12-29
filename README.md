@@ -5,7 +5,7 @@ Date: August 2025
 
 This repository contains notebooks, datasets, and reports for calculating and predicting the Air Quality Index (AQI). The project focuses on AQI computation for New York City and predictive modeling using data from an Italian city.
 
-## 📂 Files Overview
+##  Files Overview
 
 ### Notebooks
 - **`AQIoverNY.ipynb`**  
@@ -24,7 +24,7 @@ This repository contains notebooks, datasets, and reports for calculating and pr
 ### Archives
 - **`AirQualityIndexPrediction.zip`** – Contains supplementary files related to the AQI prediction project.
 
-## ⚡ Usage
+##  Usage
 
 ### Compute AQI for New York City
 ```bash
