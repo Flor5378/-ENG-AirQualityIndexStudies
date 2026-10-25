@@ -1,0 +1,114 @@
+aqsid,full_aqsid,site,lat,lon,elevation,agency,state,county,cbsa,status,params
+250270015,840250270015,Worcester - Airport,42.2742,-71.8758,,Massachusetts Dept. of Environmental Protection,MA,WORCESTER," Worcester, MA ",Active,"BARPR,O3,RHUM,SRAD,TEMP,WD,WS"
+250154003,840250154003,Belchertown,42.27809,-72.35207,,Massachusetts Dept. of Environmental Protection,MA,HAMPSHIRE," Springfield, MA ",Active,"BARPR,NO,NO2,NOX,O3,PM10,PM2.5,PMC,RHUM,SO2,SRAD,TEMP,WD,WS"
+250130018,840250130018,Springfield,42.120248,-72.58499,,Massachusetts Dept. of Environmental Protection,MA,HAMPDEN," Springfield, MA ",Active,"BC,NO,NO2,NOX,PM2.5,SO2"
+250130008,840250130008,Chicopee,42.194401,-72.555603,,Massachusetts Dept. of Environmental Protection,MA,HAMPDEN," Springfield, MA ",Active,"BARPR,NO,NO2,NOX,O3,PM2.5,RHUM,SRAD,TEMP,WD,WS"
+240150003,840240150003,Fair Hill,39.701099,-75.860001,117.7,Maryland Department of the Environment,MD,CECIL," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,"BARPR,O3,PM2.5,PRECIP,RHUM,RWD,RWS,TEMP"
+340030006,840340030006,Leonia,40.870438,-73.991997,0.9,New Jersey Dept. of Environmental Protection,NJ,BERGEN," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,O3
+340030010,840340030010,Fort Lee Near Road,40.85355,-73.9661,,New Jersey Dept. of Environmental Protection,NJ,BERGEN," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"BARPR,CO,NO,NO2,NOX,PM2.5,RHUM,TEMP,WD,WS"
+360270007,840360270007,Millbrook,41.7856,-73.6947,,New York Dept. of Environmental Conservation,NY,DUTCHESS," Poughkeepsie-Newburgh-Middletown, NY ",Active,O3
+360050133,840360050133,Pfizer Lab,40.868,-73.8782,27.8,New York Dept. of Environmental Conservation,NY,BRONX," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,O3
+360050112,840360050112,Bronx - IS74,40.814701,-73.886703,,New York Dept. of Environmental Conservation,NY,BRONX," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,PM2.5
+360050110,840360050110,Bronx - IS52,40.816101,-73.902199,,New York Dept. of Environmental Conservation,NY,BRONX," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"O3,PM2.5"
+360470118,840360470118,Bklyn - PS274,40.694401,-73.928596,,New York Dept. of Environmental Conservation,NY,KINGS," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,PM2.5
+360470052,840360470052,Bklyn - PS 314,40.641819,-74.018707,,New York Dept. of Environmental Conservation,NY,KINGS,,Active,PM2.5
+360610115,840360610115,Manhattan/IS143,40.8492,-73.9319,,New York Dept. of Environmental Conservation,NY,NEW YORK," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,PM2.5
+360790005,840360790005,Mt Ninham,41.4561,-73.7103,,New York Dept. of Environmental Conservation,NY,PUTNAM," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,O3
+360850111,840360850111,Fresh Kills,40.5802,-74.1994,,New York Dept. of Environmental Conservation,NY,RICHMOND," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"O3,PM2.5"
+360850055,840360850055,Port Richmond,40.63306,-74.137156,,New York Dept. of Environmental Conservation,NY,RICHMOND,,Active,PM2.5
+360810125,840360810125,Queens Near-road,40.739264,-73.817694,14.6,New York Dept. of Environmental Conservation,NY,QUEENS," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,PM2.5
+360810124,840360810124,Queens,40.7375,-73.8244,,New York Dept. of Environmental Conservation,NY,QUEENS," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"O3,PM2.5"
+360810120,840360810120,Maspeth,40.7269,-73.8933,,New York Dept. of Environmental Conservation,NY,QUEENS," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,PM2.5
+360870005,840360870005,Rockland Cty,41.182079,-74.028191,140.0,New York Dept. of Environmental Conservation,NY,ROCKLAND,,Active,"O3,PM2.5"
+360710002,840360710002,Newburgh,41.4994,-74.0097,,New York Dept. of Environmental Conservation,NY,ORANGE," Poughkeepsie-Newburgh-Middletown, NY ",Active,PM2.5
+360610135,840360610135,CCNY,40.8197,-73.9481,,New York Dept. of Environmental Conservation,NY,NEW YORK," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"O3,PM2.5"
+361030044,840361030044,Flax Pond,40.961015,-73.13913,,New York Dept. of Environmental Conservation,NY,SUFFOLK,,Active,"NO2,NOY,O3"
+361192004,840361192004,White Plains,41.0522,-73.7642,,New York Dept. of Environmental Conservation,NY,WESTCHESTER," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"O3,PM2.5"
+361030009,840361030009,Holtsville,40.8278,-73.0575,,New York Dept. of Environmental Conservation,NY,SUFFOLK," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"O3,PM2.5"
+361030004,840361030004,Riverhead,40.9617,-72.715,,New York Dept. of Environmental Conservation,NY,SUFFOLK," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,O3
+361030002,840361030002,Babylon,40.7356,-73.4061,,New York Dept. of Environmental Conservation,NY,SUFFOLK," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,O3
+340070010,840340070010,South Camden,39.923969,-75.122314,4.9,New Jersey Dept. of Environmental Protection,NJ,CAMDEN," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,"CO,NO2,O3,PM10,PM2.5,SO2"
+340190001,840340190001,Flemington,40.515251,-74.806755,44.8,New Jersey Dept. of Environmental Protection,NJ,HUNTERDON," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"BARPR,O3,PM2.5,RHUM,TEMP,WD,WS"
+340230011,840340230011,Rutgers University,40.462181,-74.429436,18.9,New Jersey Dept. of Environmental Protection,NJ,MIDDLESEX," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"BARPR,NO,NO2,O3,PM2.5,RHUM,TEMP,WD,WS"
+340219991,840340219991,Wash. Crossing,40.3125,-74.8729,61.0,EPA Office of Atmospheric Protection,NJ,MERCER," Trenton-Ewing, NJ ",Active,"O3,TEMP"
+340210008,840340210008,Trenton,40.222421,-74.763167,14.9,New Jersey Dept. of Environmental Protection,NJ,MERCER," Trenton-Ewing, NJ ",Active,PM2.5
+340210005,840340210005,Rider University,40.283092,-74.742645,29.9,New Jersey Dept. of Environmental Protection,NJ,MERCER," Trenton-Ewing, NJ ",Active,"BARPR,O3,PM2.5,RHUM,TEMP,WD,WS"
+340290006,840340290006,Colliers Mills,40.064846,-74.444061,40.9,New Jersey Dept. of Environmental Protection,NJ,OCEAN," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,O3
+340390004,840340390004,Elizabeth Trailer,40.641441,-74.208366,4.9,New Jersey Dept. of Environmental Protection,NJ,UNION," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"BARPR,CO,NO,NO2,NOX,PM2.5,RHUM,SO2,TEMP,WD,WS"
+340315001,840340315001,Ramapo,41.058617,-74.255547,305.9,New Jersey Dept. of Environmental Protection,NJ,PASSAIC," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,O3
+340310005,840340310005,Paterson,40.918381,-74.168092,34.2,New Jersey Dept. of Environmental Protection,NJ,PASSAIC," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,PM2.5
+340292002,840340292002,Toms River,39.994908,-74.170447,8.8,New Jersey Dept. of Environmental Protection,NJ,OCEAN," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,PM2.5
+340273001,840340273001,Chester,40.787628,-74.6763,278.2,New Jersey Dept. of Environmental Protection,NJ,MORRIS," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"NO,NO2,NOX,O3,PM2.5,SO2"
+340250005,840340250005,Monmouth University,40.277645,-74.005096,7.9,New Jersey Dept. of Environmental Protection,NJ,MONMOUTH," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,O3
+340130017,840340130017,Newark Chestnut,40.72736,-74.17447,,New Jersey Dept. of Environmental Protection,NJ,ESSEX," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"O3,PM10,PM2.5"
+340071007,840340071007,Pennsauken PM,39.989036,-75.050008,27.1,New Jersey Dept. of Environmental Protection,NJ,CAMDEN," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,PM2.5
+340071001,840340071001,Ancora State Hosptial,39.68425,-74.861488,32.9,New Jersey Dept. of Environmental Protection,NJ,CAMDEN," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,"CO,O3,SO2"
+340150002,840340150002,Clarksboro,39.800339,-75.21212,11.9,New Jersey Dept. of Environmental Protection,NJ,GLOUCESTER," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,"O3,PM2.5,SO2"
+340170006,840340170006,Bayonne,40.67025,-74.126083,2.7,New Jersey Dept. of Environmental Protection,NJ,HUDSON," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"BARPR,NO,NO2,NOX,O3,RHUM,SO2,TEMP,WD,WS"
+340171003,840340171003,Jersey City FH,40.725452,-74.052292,5.8,New Jersey Dept. of Environmental Protection,NJ,HUDSON," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,PM2.5
+340171002,840340171002,Jersey City,40.731689,-74.066566,26.8,New Jersey Dept. of Environmental Protection,NJ,HUDSON," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,"CO,NO,NO2,NOX,SO2"
+340170008,840340170008,Union City High School,40.770908,-74.036218,58.0,New Jersey Dept. of Environmental Protection,NJ,HUDSON," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,PM2.5
+340410007,840340410007,Columbia,40.924606,-75.067825,146.1,New Jersey Dept. of Environmental Protection,NJ,WARREN,,Active,"BARPR,NO,NO2,NOX,O3,PM2.5,RHUM,SO2,TEMP,WD,WS"
+340392003,840340392003,Rahway PM,40.603943,-74.276176,2.7,New Jersey Dept. of Environmental Protection,NJ,UNION," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Active,PM2.5
+090031003,840090031003,East Hartford,41.7847,-72.6297,14.9,Connecticut Dept. of Energy and Environmental Protection,CT,HARTFORD," Hartford-West Hartford-East Hartford, CT ",Active,"BARPR,BC_LC,DEWPOINT,NO2,O3,PM10,PM2.5,PMC,RHUM,RWD,RWS,TEMP,UV-AETH"
+090050005,840090050005,Cornwall,41.833099,-73.303299,505.1,Connecticut Dept. of Energy and Environmental Protection,CT,LITCHFIELD," Torrington, CT ",Active,"BARPR,BC_LC,CO,DEWPOINT,NO,NOY,O3,PM10,PM2.5,PMC,RHUM,RWD,RWS,SO2,SRAD,TEMP,UV-AETH"
+090090027,840090090027,New Haven,41.301288,-72.902685,,Connecticut Dept. of Energy and Environmental Protection,CT,NEW HAVEN," New Haven-Milford, CT ",Active,"BARPR,BC_LC,CO,DEWPOINT,NO,NO2,NOX,O3,PM10,PM2.5,PMC,RHUM,RWD,RWS,SO2,SRAD,TEMP,UV-AETH"
+090079007,840090079007,Middletown,41.55,-72.626,,Connecticut Dept. of Energy and Environmental Protection,CT,MIDDLESEX,,Active,"BARPR,RWD,RWS,TEMP"
+090011123,840090011123,Danbury,41.4014,-73.4447,115.9,Connecticut Dept. of Energy and Environmental Protection,CT,FAIRFIELD," Bridgeport-Stamford-Norwalk, CT ",Active,"BARPR,BC_LC,PM10,PM2.5,PMC,RWD,RWS,TEMP,UV-AETH"
+090010017,840090010017,Greenwich,41.0036,-73.5853,,Connecticut Dept. of Energy and Environmental Protection,CT,FAIRFIELD," Bridgeport-Stamford-Norwalk, CT ",Active,"RWD,RWS,TEMP"
+090010010,840090010010,Bridgeport,41.171398,-73.195297,6.7,Connecticut Dept. of Energy and Environmental Protection,CT,FAIRFIELD," Bridgeport-Stamford-Norwalk, CT ",Active,"PM10,PM2.5,PMC,SO2,TEMP"
+090013007,840090013007,Stratford,41.1519,-73.1036,,Connecticut Dept. of Energy and Environmental Protection,CT,FAIRFIELD," Bridgeport-Stamford-Norwalk, CT ",Active,TEMP
+090019003,840090019003,Westport,41.1189,-73.3369,4.0,Connecticut Dept. of Energy and Environmental Protection,CT,FAIRFIELD," Bridgeport-Stamford-Norwalk, CT ",Active,"NO2,RWD,RWS,TEMP"
+090030025,840090030025,Hartford,41.771444,-72.679923,57.0,Connecticut Dept. of Energy and Environmental Protection,CT,HARTFORD," Hartford-West Hartford-East Hartford, CT ",Active,"BARPR,BC_LC,CO,NO2,PM10,PM2.5,PMC,RWD,RWS,TEMP,UV-AETH"
+100032004,840100032004,MLK,39.739444,-75.558056,,Delaware Dept. of Natural Resources and Environment,DE,NEW CASTLE," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,"CO,O3,PM10,PM2.5,SO2,WD,WS"
+090092123,840090092123,Waterbury,41.5503,-73.0442,,Connecticut Dept. of Energy and Environmental Protection,CT,NEW HAVEN," New Haven-Milford, CT ",Active,"PM10,PM2.5,PMC,RWD,RWS,TEMP"
+090110124,840090110124,Groton,41.3536,-72.0789,,Connecticut Dept. of Energy and Environmental Protection,CT,NEW LONDON," Norwich-New London, CT ",Active,"PM10,PM2.5,PMC,TEMP"
+090099002,840090099002,Madison,41.256902,-72.55322,,Connecticut Dept. of Energy and Environmental Protection,CT,NEW HAVEN," New Haven-Milford, CT ",Active,"RWD,RWS,TEMP"
+090131001,840090131001,Stafford,41.9756,-72.3867,,Connecticut Dept. of Energy and Environmental Protection,CT,TOLLAND," Hartford-West Hartford-East Hartford, CT ",Active,"RWD,RWS,TEMP"
+100031013,840100031013,BELLFNT2,39.773889,-75.496389,,Delaware Dept. of Natural Resources and Environment,DE,NEW CASTLE," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,"O3,SO2"
+100031007,840100031007,LUMS 2,39.5513,-75.732,,Delaware Dept. of Natural Resources and Environment,DE,NEW CASTLE," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,"O3,PM2.5,SO2"
+100031012,840100031012,Newark,39.691962,-75.761299,,Delaware Dept. of Natural Resources and Environment,DE,NEW CASTLE,,Active,PM2.5
+100031010,840100031010,BCSP,39.817222,-75.563889,,Delaware Dept. of Natural Resources and Environment,DE,NEW CASTLE," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,O3
+100031008,840100031008,Rte 9 Del. City,39.57768,-75.6036,,Delaware Dept. of Natural Resources and Environment,DE,NEW CASTLE,,Active,"O3,PM2.5,SO2"
+090159991,840090159991,Abington,41.8402,-72.01,208.9,EPA Office of Atmospheric Protection,CT,WINDHAM," Willimantic, CT ",Active,"O3,TEMP"
+100031003,840100031003,RIVER ROAD PARK; BELLEFONTE,39.7611,-75.4919,,Delaware Dept. of Natural Resources and Environment,DE,NEW CASTLE," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,PM2.5
+421310010,840421310010,Tunkhannock,41.605244,-75.95774,,Pennsylvania Dept. of Environmental Protection,PA,WYOMING,,Active,PM2.5
+421010076,840421010076,MON,39.988842,-75.207205,,Philadelphia Air Management Services,PA,PHILADELPHIA,,Active,"CO,NO2,PM2.5,WD,WS"
+421010075,840421010075,TOR,40.054171,-74.985166,,Philadelphia Air Management Services,PA,PHILADELPHIA,,Active,"CO,NO2,PM2.5,RHUM,TEMP,WD,WS"
+421010057,840421010057,FAB,39.9603,-75.1424,,Philadelphia Air Management Services,PA,PHILADELPHIA,,Active,PM2.5
+421010055,840421010055,RIT,39.922516,-75.186783,,Philadelphia Air Management Services,PA,PHILADELPHIA,,Active,"PM2.5,SO2"
+421010048,840421010048,NEW,39.991389,-75.080833,,Philadelphia Air Management Services,PA,PHILADELPHIA,,Active,"CO,NO2,O3,PM10,PM2.5,RHUM,RWD,RWS,SO2,TEMP,WD,WS"
+421150215,840421150215,New Milford,41.867336,-75.686602,,Pennsylvania Dept. of Environmental Protection,PA,SUSQUEHANNA,,Active,PM2.5
+440090009,840440090009,Misquamicut,41.323304,-71.804029,7.6,Rhode Island Dept. of Environmental Management,RI,WASHINGTON,,Active,O3
+420170012,840420170012,Bristol,40.107201,-74.882202,,Pennsylvania Dept. of Environmental Protection,PA,BUCKS," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,"BARPR,O3,PRECIP,RHUM,RWD,SRAD,TEMP,WS"
+420110011,840420110011,Reading Airport,40.3833,-75.9686,92.1,Pennsylvania Dept. of Environmental Protection,PA,BERKS," Reading, PA ",Active,"O3,PM2.5"
+420110006,840420110006,Kutztown,40.51408,-75.789703,144.6,Pennsylvania Dept. of Environmental Protection,PA,BERKS,,Active,O3
+420770004,840420770004,Allentown,40.6119,-75.4325,,Pennsylvania Dept. of Environmental Protection,PA,LEHIGH," Allentown-Bethlehem-Easton, PA-NJ ",Active,"O3,PM10,PM2.5"
+420692006,840420692006,Scranton,41.4428,-75.6231,,Pennsylvania Dept. of Environmental Protection,PA,LACKAWANNA," Scranton--Wilkes-Barre, PA ",Active,"O3,PM10,PM2.5"
+420890002,840420890002,Swiftwater,41.083099,-75.3283,370.3,Pennsylvania Dept. of Environmental Protection,PA,MONROE," East Stroudsburg, PA ",Active,"O3,PM2.5"
+420950025,840420950025,Freemansburg,40.6281,-75.3411,,Pennsylvania Dept. of Environmental Protection,PA,NORTHAMPTON," Allentown-Bethlehem-Easton, PA-NJ ",Active,"O3,PM2.5"
+421010024,840421010024,NEA,40.0767,-75.0108,,Philadelphia Air Management Services,PA,PHILADELPHIA," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,O3
+421010004,840421010004,LABP,40.00892,-75.09777,22.6,Philadelphia Air Management Services,PA,PHILADELPHIA," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,"O3,PM2.5"
+420910013,840420910013,Norristown,40.1122,-75.3092,,Pennsylvania Dept. of Environmental Protection,PA,MONTGOMERY," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,"BARPR,O3,PM2.5,PRECIP,RHUM,RWD,SRAD,TEMP,WS"
+420690101,840420690101,Peckville,41.4789,-75.5781,,Pennsylvania Dept. of Environmental Protection,PA,LACKAWANNA," Scranton--Wilkes-Barre, PA ",Active,O3
+420450002,840420450002,Chester,39.8356,-75.3725,,Pennsylvania Dept. of Environmental Protection,PA,DELAWARE," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,"BARPR,O3,PM10,PM2.5,PRECIP,RHUM,RWD,SRAD,TEMP,WS"
+420290100,840420290100,New Garden,39.8344,-75.7678,,Pennsylvania Dept. of Environmental Protection,PA,CHESTER," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,"O3,PM2.5"
+420450109,840420450109,Marcus Hook,39.818715,-75.413973,7.0,Pennsylvania Dept. of Environmental Protection,PA,DELAWARE," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Active,PM2.5
+090039999,840090039999,Hartford-Village Green,41.764836,-72.668228,,Connecticut Dept. of Energy and Environmental Protection,CT,HARTFORD,,Inactive,"O3,PM2.5,TEMP,WD,WS"
+090032006,840090032006,East Hartford - High Street,41.7426,-72.6417,15.3,Connecticut Dept. of Energy and Environmental Protection,CT,HARTFORD," Hartford-West Hartford-East Hartford, CT ",Inactive,"PM2.5,WD,WS"
+090070007,840090070007,Middletown-CVH Shew Hall,41.5519,-72.6308,,Connecticut Dept. of Energy and Environmental Protection,CT,MIDDLESEX," Hartford-West Hartford-East Hartford, CT ",Inactive,"BARPR,O3,RWD,RWS,TEMP"
+250154002,840250154002,Ware,42.298302,-72.334396,,Massachusetts Dept. of Environmental Protection,MA,HAMPSHIRE," Springfield, MA ",Inactive,"BARPR,NO,NO2,NOX,NOY,O3,PM10,PM2.5,PMC,RHUM,SO2,SRAD,TEMP,WD,WS"
+250130016,840250130016,Springfield,42.1086,-72.5911,,Massachusetts Dept. of Environmental Protection,MA,HAMPDEN," Springfield, MA ",Inactive,"BC,CO,NO,NO2,NOX,PM2.5,SO2"
+340070002,840340070002,Camden Spruce St,39.934446,-75.125291,1.2,New Jersey Dept. of Environmental Protection,NJ,CAMDEN," Philadelphia-Camden-Wilmington, PA-NJ-DE-MD ",Inactive,"BARPR,CO,NO,NO2,NOX,O3,PM2.5,RHUM,SO2,TEMP,WD,WS"
+360850067,840360850067,Susan Wagner,40.5969,-74.1264,,New York Dept. of Environmental Conservation,NY,RICHMOND," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Inactive,O3
+360715001,840360715001,Valley Central,41.5231,-74.215,,New York Dept. of Environmental Conservation,NY,ORANGE," Poughkeepsie-Newburgh-Middletown, NY ",Inactive,O3
+360610134,840360610134,Division Street,40.7142,-73.995,,New York Dept. of Environmental Conservation,NY,NEW YORK," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Inactive,PM2.5
+360610128,840360610128,Manhattan/PS19,40.73,-73.984459,,New York Dept. of Environmental Conservation,NY,NEW YORK,,Inactive,PM2.5
+360050080,840360050080,Morrisania,40.8367,-73.9214,,New York Dept. of Environmental Conservation,NY,BRONX," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Inactive,PM2.5
+340390003,840340390003,Elizabeth,40.662388,-74.214813,5.8,New Jersey Dept. of Environmental Protection,NJ,UNION,,Inactive,"CO,SO2"
+340230006,840340230006,New Brunswick,40.472824,-74.422401,20.7,New Jersey Dept. of Environmental Protection,NJ,MIDDLESEX," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Inactive,PM2.5
+340131003,840340131003,East Orange,40.7575,-74.2005,47.9,New Jersey Dept. of Environmental Protection,NJ,ESSEX," New York-Northern New Jersey-Long Island, NY-NJ-PA ",Inactive,"BARPR,CO,NO,NO2,NOX,RHUM,TEMP,WD,WS"
+420958000,840420958000,EAS2,40.6922,-75.2372,,Pennsylvania Dept. of Environmental Protection,PA,NORTHAMPTON," Allentown-Bethlehem-Easton, PA-NJ ",Inactive,O3
+420791101,840420791101,Wilkes-Barre,41.2658,-75.8464,,Pennsylvania Dept. of Environmental Protection,PA,LUZERNE," Scranton--Wilkes-Barre, PA ",Inactive,"O3,PM10"
+340130003,840340130003,Newark Firehouse,40.720989,-74.192894,,,,,,unlisted,
+360590005,840360590005,Eisenhower Park,40.7447,-73.5869,,,,,,unlisted,

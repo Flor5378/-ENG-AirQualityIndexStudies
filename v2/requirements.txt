@@ -1,0 +1,23 @@
+# AQI v2 dependencies (Python 3.11 or later).
+# Results committed in this repository were produced with: numpy 2.5.3, pandas 3.0.5,
+# scipy 1.18.1, scikit-learn 1.9.1, lightgbm 4.7.0, statsmodels 0.15.0, matplotlib 3.11.2,
+# geopandas 1.2.0, shapely 2.2.0, folium 0.20.0.
+numpy>=1.26
+pandas>=2.2
+scipy>=1.11
+scikit-learn>=1.4
+lightgbm>=4.0
+statsmodels>=0.14
+matplotlib>=3.8
+geopandas>=1.0
+shapely>=2.0
+pyogrio>=0.7
+pyproj>=3.6
+folium>=0.15
+requests>=2.31
+jupytext>=1.16
+nbclient>=0.9
+nbformat>=5.9
+ipykernel>=6.25
+pytest>=7.4
+pillow>=10.0

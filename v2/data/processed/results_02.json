@@ -1,0 +1,112 @@
+{
+ "v1_rf_mae": 22.5,
+ "v1_rf_r2": 0.643,
+ "random_r2": 0.92,
+ "chrono_r2": 0.88,
+ "fill_value": 457.1,
+ "benzene_r2": 0.99998,
+ "lowcost_exact": 75.0,
+ "lowcost_one": 99.0,
+ "vs_r2": {
+  "co_gt|lightgbm": {
+   "static": 0.88,
+   "quarterly": 0.75,
+   "monthly": 0.83,
+   "weekly": 0.86
+  },
+  "co_gt|linear": {
+   "static": -0.25,
+   "quarterly": 0.57,
+   "monthly": 0.77,
+   "weekly": 0.83
+  },
+  "no2_gt|lightgbm": {
+   "static": 0.34,
+   "quarterly": 0.66,
+   "monthly": 0.72,
+   "weekly": 0.79
+  },
+  "no2_gt|linear": {
+   "static": 0.24,
+   "quarterly": 0.25,
+   "monthly": 0.66,
+   "weekly": 0.8
+  },
+  "nox_gt|lightgbm": {
+   "static": 0.07,
+   "quarterly": 0.8,
+   "monthly": 0.87,
+   "weekly": 0.9
+  },
+  "nox_gt|linear": {
+   "static": -0.5,
+   "quarterly": 0.73,
+   "monthly": 0.79,
+   "weekly": 0.89
+  }
+ },
+ "gap_mae": {
+  "column mean": {
+   "co_gt": 1.13,
+   "no2_gt": 40.3,
+   "nox_gt": 163.09
+  },
+  "hour-of-week profile": {
+   "co_gt": 0.79,
+   "no2_gt": 32.41,
+   "nox_gt": 143.16
+  },
+  "linear interpolation": {
+   "co_gt": 1.23,
+   "no2_gt": 40.75,
+   "nox_gt": 150.25
+  },
+  "v1: single constant": {
+   "co_gt": 454.99,
+   "no2_gt": 342.54,
+   "nox_gt": 264.49
+  },
+  "virtual sensor (monthly recal.)": {
+   "co_gt": 0.55,
+   "no2_gt": 21.91,
+   "nox_gt": 79.52
+  }
+ },
+ "forecast": {
+  "1": {
+   "mae": 4.13,
+   "skill_pers": 14.0,
+   "skill_clim": 66.0,
+   "cov": 80.0,
+   "cov_raw": 69.0
+  },
+  "3": {
+   "mae": 6.63,
+   "skill_pers": 38.0,
+   "skill_clim": 46.0,
+   "cov": 81.0,
+   "cov_raw": 64.0
+  },
+  "6": {
+   "mae": 7.3,
+   "skill_pers": 50.0,
+   "skill_clim": 40.0,
+   "cov": 83.0,
+   "cov_raw": 63.0
+  },
+  "12": {
+   "mae": 7.43,
+   "skill_pers": 54.0,
+   "skill_clim": 39.0,
+   "cov": 82.0,
+   "cov_raw": 63.0
+  },
+  "24": {
+   "mae": 7.76,
+   "skill_pers": 14.0,
+   "skill_clim": 37.0,
+   "cov": 81.0,
+   "cov_raw": 61.0
+  }
+ }
+}

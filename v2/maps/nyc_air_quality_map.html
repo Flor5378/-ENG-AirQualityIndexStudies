@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_fdd5a5e8933a1dc0d0da5d92b1c0f05f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    
+            
+                <style>
+                    .leaflet-image-layer {
+                        /* old android/safari*/
+                        image-rendering: -webkit-optimize-contrast;
+                        image-rendering: crisp-edges; /* safari */
+                        image-rendering: pixelated; /* chrome */
+                        image-rendering: -moz-crisp-edges; /* firefox */
+                        image-rendering: -o-crisp-edges; /* opera */
+                        -ms-interpolation-mode: nearest-neighbor; /* ie */
+                    }
+                </style>
+            
+        
+    
+            
+                <style>
+                    .leaflet-image-layer {
+                        /* old android/safari*/
+                        image-rendering: -webkit-optimize-contrast;
+                        image-rendering: crisp-edges; /* safari */
+                        image-rendering: pixelated; /* chrome */
+                        image-rendering: -moz-crisp-edges; /* firefox */
+                        image-rendering: -o-crisp-edges; /* opera */
+                        -ms-interpolation-mode: nearest-neighbor; /* ie */
+                    }
+                </style>
+            
+        
+    
+            
+                <style>
+                    .leaflet-image-layer {
+                        /* old android/safari*/
+                        image-rendering: -webkit-optimize-contrast;
+                        image-rendering: crisp-edges; /* safari */
+                        image-rendering: pixelated; /* chrome */
+                        image-rendering: -moz-crisp-edges; /* firefox */
+                        image-rendering: -o-crisp-edges; /* opera */
+                        -ms-interpolation-mode: nearest-neighbor; /* ie */
+                    }
+                </style>
+            
+        
+    
+            
+                <style>
+                    .leaflet-image-layer {
+                        /* old android/safari*/
+                        image-rendering: -webkit-optimize-contrast;
+                        image-rendering: crisp-edges; /* safari */
+                        image-rendering: pixelated; /* chrome */
+                        image-rendering: -moz-crisp-edges; /* firefox */
+                        image-rendering: -o-crisp-edges; /* opera */
+                        -ms-interpolation-mode: nearest-neighbor; /* ie */
+                    }
+                </style>
+            
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_fdd5a5e8933a1dc0d0da5d92b1c0f05f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_fdd5a5e8933a1dc0d0da5d92b1c0f05f = L.map(
+                "map_fdd5a5e8933a1dc0d0da5d92b1c0f05f",
+                {
+                    center: [40.75, -73.95],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_fdd5a5e8933a1dc0d0da5d92b1c0f05f);
+
+            
+
+        
+    
+            var tile_layer_14dc4d470f6a3c7cbfc354d9c1bf7225 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_14dc4d470f6a3c7cbfc354d9c1bf7225.addTo(map_fdd5a5e8933a1dc0d0da5d92b1c0f05f);
+        
+    
+            var image_overlay_de4d885334982da30726b47dec34631e = L.imageOverlay(
+                "data:image/png;base64,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",
+                [[40.155, -75.045], [41.444999999999744, -72.55499999999873]],
+                {
+  "opacity": 0.85,
+}
+            );
+        
+    
+            image_overlay_de4d885334982da30726b47dec34631e.addTo(map_fdd5a5e8933a1dc0d0da5d92b1c0f05f);
+        
+    
+            var image_overlay_e79956c2b726346e79d99a2332dc22c3 = L.imageOverlay(
+                "data:image/png;base64,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",
+                [[40.155, -75.045], [41.444999999999744, -72.55499999999873]],
+                {
+  "opacity": 0.85,
+}
+            );
+        
+    
+            var image_overlay_5b3e518b66c437fd83d767f090d97095 = L.imageOverlay(
+                "data:image/png;base64,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",
+                [[40.16, -75.03999999999999], [41.4400000000002, -72.56000000000049]],
+                {
+  "opacity": 0.85,
+}
+            );
+        
+    
+            var image_overlay_184389dba15f7efdfdd3b61662561d08 = L.imageOverlay(
+                "data:image/png;base64,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",
+                [[40.155, -75.045], [41.444999999999744, -72.55499999999873]],
+                {
+  "opacity": 0.85,
+}
+            );
+        
+    
+            var feature_group_1264d4fc0abd6d619920acde4f238368 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_ccef2f487d64cf17964354c4e56bfc7f = L.circleMarker(
+                [41.171398, -73.195297],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_0fefa59ef61530f621a7d3b06c72fc33 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_cca3e4053ac164a8e73d8bf6931f3433 = $(`<div id="html_cca3e4053ac164a8e73d8bf6931f3433" style="width: 100.0%; height: 100.0%;"><b>Bridgeport</b> (CT)<br>PM2.5 mean 2022-2025: 7.3 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_0fefa59ef61530f621a7d3b06c72fc33.setContent(html_cca3e4053ac164a8e73d8bf6931f3433);
+            
+        
+
+        circle_marker_ccef2f487d64cf17964354c4e56bfc7f.bindPopup(popup_0fefa59ef61530f621a7d3b06c72fc33)
+        ;
+
+        
+    
+    
+            var circle_marker_83cdd2f5dbe2dd6d50eb91b9acfed200 = L.circleMarker(
+                [41.4014, -73.4447],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_f7621afa380ca7f8005b95c083701b39 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_fac9d115af8524341019e47117a4ef22 = $(`<div id="html_fac9d115af8524341019e47117a4ef22" style="width: 100.0%; height: 100.0%;"><b>Danbury</b> (CT)<br>PM2.5 mean 2022-2025: 7.3 ug/m3<br>ozone summer mean: 45.3 ppb</div>`)[0];
+                popup_f7621afa380ca7f8005b95c083701b39.setContent(html_fac9d115af8524341019e47117a4ef22);
+            
+        
+
+        circle_marker_83cdd2f5dbe2dd6d50eb91b9acfed200.bindPopup(popup_f7621afa380ca7f8005b95c083701b39)
+        ;
+
+        
+    
+    
+            var circle_marker_e95cf872a2fe8c4ff03b19e91ffde320 = L.circleMarker(
+                [41.771444, -72.679923],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_5e433c4f11c094a05b0db2f675d87011 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_3695bfcf7fac6502be63425a92918626 = $(`<div id="html_3695bfcf7fac6502be63425a92918626" style="width: 100.0%; height: 100.0%;"><b>Hartford</b> (CT)<br>PM2.5 mean 2022-2025: 7.4 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_5e433c4f11c094a05b0db2f675d87011.setContent(html_3695bfcf7fac6502be63425a92918626);
+            
+        
+
+        circle_marker_e95cf872a2fe8c4ff03b19e91ffde320.bindPopup(popup_5e433c4f11c094a05b0db2f675d87011)
+        ;
+
+        
+    
+    
+            var circle_marker_e205726c70a91b97675313d15741d1b1 = L.circleMarker(
+                [41.7847, -72.6297],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_dde0fe272feec8d41a6ae29041f16cee = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_f7fa60094ca1f005a0b6509c69918038 = $(`<div id="html_f7fa60094ca1f005a0b6509c69918038" style="width: 100.0%; height: 100.0%;"><b>East Hartford</b> (CT)<br>PM2.5 mean 2022-2025: 7.0 ug/m3<br>ozone summer mean: 44.1 ppb</div>`)[0];
+                popup_dde0fe272feec8d41a6ae29041f16cee.setContent(html_f7fa60094ca1f005a0b6509c69918038);
+            
+        
+
+        circle_marker_e205726c70a91b97675313d15741d1b1.bindPopup(popup_dde0fe272feec8d41a6ae29041f16cee)
+        ;
+
+        
+    
+    
+            var circle_marker_385cb9afcd36511d5533eb966d7cd323 = L.circleMarker(
+                [41.833099, -73.303299],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_f16997ef0ab264e5731c057fcd99b587 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_325b7633db01505943201ec10d531dc3 = $(`<div id="html_325b7633db01505943201ec10d531dc3" style="width: 100.0%; height: 100.0%;"><b>Cornwall</b> (CT)<br>PM2.5 mean 2022-2025: 5.4 ug/m3<br>ozone summer mean: 45.0 ppb</div>`)[0];
+                popup_f16997ef0ab264e5731c057fcd99b587.setContent(html_325b7633db01505943201ec10d531dc3);
+            
+        
+
+        circle_marker_385cb9afcd36511d5533eb966d7cd323.bindPopup(popup_f16997ef0ab264e5731c057fcd99b587)
+        ;
+
+        
+    
+    
+            var circle_marker_2ddea9afe0e822ffc0fcd0cc8e47fcc0 = L.circleMarker(
+                [41.301288, -72.902685],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_ce34547cfe57a602cc6473fea4dcd000 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_5e06b2c5fb38768ace79d3bc0983e862 = $(`<div id="html_5e06b2c5fb38768ace79d3bc0983e862" style="width: 100.0%; height: 100.0%;"><b>New Haven</b> (CT)<br>PM2.5 mean 2022-2025: 7.3 ug/m3<br>ozone summer mean: 44.6 ppb</div>`)[0];
+                popup_ce34547cfe57a602cc6473fea4dcd000.setContent(html_5e06b2c5fb38768ace79d3bc0983e862);
+            
+        
+
+        circle_marker_2ddea9afe0e822ffc0fcd0cc8e47fcc0.bindPopup(popup_ce34547cfe57a602cc6473fea4dcd000)
+        ;
+
+        
+    
+    
+            var circle_marker_760c7ca0da12feb97d8ef054fb18c0b1 = L.circleMarker(
+                [41.5503, -73.0442],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_bf5e9ad2df14edb904cc090d280ae648 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_61246815164ca76dfdd66c3ca165bfeb = $(`<div id="html_61246815164ca76dfdd66c3ca165bfeb" style="width: 100.0%; height: 100.0%;"><b>Waterbury</b> (CT)<br>PM2.5 mean 2022-2025: 7.2 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_bf5e9ad2df14edb904cc090d280ae648.setContent(html_61246815164ca76dfdd66c3ca165bfeb);
+            
+        
+
+        circle_marker_760c7ca0da12feb97d8ef054fb18c0b1.bindPopup(popup_bf5e9ad2df14edb904cc090d280ae648)
+        ;
+
+        
+    
+    
+            var circle_marker_800698744b11aae1f099341952a35ceb = L.circleMarker(
+                [41.3536, -72.0789],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_550774e9fe9a456da6a2897e7a823eed = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_3aff4e0def998ceafebb27024af777ea = $(`<div id="html_3aff4e0def998ceafebb27024af777ea" style="width: 100.0%; height: 100.0%;"><b>Groton</b> (CT)<br>PM2.5 mean 2022-2025: 6.4 ug/m3<br>ozone summer mean: 43.9 ppb</div>`)[0];
+                popup_550774e9fe9a456da6a2897e7a823eed.setContent(html_3aff4e0def998ceafebb27024af777ea);
+            
+        
+
+        circle_marker_800698744b11aae1f099341952a35ceb.bindPopup(popup_550774e9fe9a456da6a2897e7a823eed)
+        ;
+
+        
+    
+    
+            var circle_marker_594029850d41edf88074a0aa59a95f31 = L.circleMarker(
+                [39.7611, -75.4919],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_edef4e24d81825e509ec573cb3fa27c3 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_4264975979d8590eab6571f56e763aad = $(`<div id="html_4264975979d8590eab6571f56e763aad" style="width: 100.0%; height: 100.0%;"><b>RIVER ROAD PARK; BELLEFONTE</b> (DE)<br>PM2.5 mean 2022-2025: 8.1 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_edef4e24d81825e509ec573cb3fa27c3.setContent(html_4264975979d8590eab6571f56e763aad);
+            
+        
+
+        circle_marker_594029850d41edf88074a0aa59a95f31.bindPopup(popup_edef4e24d81825e509ec573cb3fa27c3)
+        ;
+
+        
+    
+    
+            var circle_marker_ac09bff126f89f41df98402175f9fe3f = L.circleMarker(
+                [39.5513, -75.732],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_26f3b1dd25045118eeee8be612d4c6a7 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_1c40757052c9f8c7b6f802c6bf1aa984 = $(`<div id="html_1c40757052c9f8c7b6f802c6bf1aa984" style="width: 100.0%; height: 100.0%;"><b>LUMS 2</b> (DE)<br>PM2.5 mean 2022-2025: 7.5 ug/m3<br>ozone summer mean: 45.3 ppb</div>`)[0];
+                popup_26f3b1dd25045118eeee8be612d4c6a7.setContent(html_1c40757052c9f8c7b6f802c6bf1aa984);
+            
+        
+
+        circle_marker_ac09bff126f89f41df98402175f9fe3f.bindPopup(popup_26f3b1dd25045118eeee8be612d4c6a7)
+        ;
+
+        
+    
+    
+            var circle_marker_b5292f5d486a3556d8824075a2ee0524 = L.circleMarker(
+                [39.57768, -75.6036],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_1734b5b5aa8af8ad44796fa7f8ece349 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_6b86a5b99ab9c4c1d9488a74c57f3db6 = $(`<div id="html_6b86a5b99ab9c4c1d9488a74c57f3db6" style="width: 100.0%; height: 100.0%;"><b>Rte 9 Del. City</b> (DE)<br>PM2.5 mean 2022-2025: 7.3 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_1734b5b5aa8af8ad44796fa7f8ece349.setContent(html_6b86a5b99ab9c4c1d9488a74c57f3db6);
+            
+        
+
+        circle_marker_b5292f5d486a3556d8824075a2ee0524.bindPopup(popup_1734b5b5aa8af8ad44796fa7f8ece349)
+        ;
+
+        
+    
+    
+            var circle_marker_422a97a3bf07d353fea9c529a555dcfb = L.circleMarker(
+                [39.691962, -75.761299],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_206b4c18af298a371834bd592a2ff2f5 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_0ab974aef1459c8c792289b720eadc95 = $(`<div id="html_0ab974aef1459c8c792289b720eadc95" style="width: 100.0%; height: 100.0%;"><b>Newark</b> (DE)<br>PM2.5 mean 2022-2025: 9.1 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_206b4c18af298a371834bd592a2ff2f5.setContent(html_0ab974aef1459c8c792289b720eadc95);
+            
+        
+
+        circle_marker_422a97a3bf07d353fea9c529a555dcfb.bindPopup(popup_206b4c18af298a371834bd592a2ff2f5)
+        ;
+
+        
+    
+    
+            var circle_marker_f19576a1b7c7ef8f9da840164fea9d4a = L.circleMarker(
+                [39.739444, -75.558056],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_e66cff5a02a220976f6fd9470c49fe82 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_b2ea3e410a50264a9e557ad76ce66cb0 = $(`<div id="html_b2ea3e410a50264a9e557ad76ce66cb0" style="width: 100.0%; height: 100.0%;"><b>MLK</b> (DE)<br>PM2.5 mean 2022-2025: 8.3 ug/m3<br>ozone summer mean: 45.9 ppb</div>`)[0];
+                popup_e66cff5a02a220976f6fd9470c49fe82.setContent(html_b2ea3e410a50264a9e557ad76ce66cb0);
+            
+        
+
+        circle_marker_f19576a1b7c7ef8f9da840164fea9d4a.bindPopup(popup_e66cff5a02a220976f6fd9470c49fe82)
+        ;
+
+        
+    
+    
+            var circle_marker_406793c6467b294996a7ba48721f249d = L.circleMarker(
+                [39.701099, -75.860001],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_69a95c5829ad2cf179659b0837b32bf3 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_77fbd1056e511166f7392a74ec3f0e10 = $(`<div id="html_77fbd1056e511166f7392a74ec3f0e10" style="width: 100.0%; height: 100.0%;"><b>Fair Hill</b> (MD)<br>PM2.5 mean 2022-2025: 6.9 ug/m3<br>ozone summer mean: 46.6 ppb</div>`)[0];
+                popup_69a95c5829ad2cf179659b0837b32bf3.setContent(html_77fbd1056e511166f7392a74ec3f0e10);
+            
+        
+
+        circle_marker_406793c6467b294996a7ba48721f249d.bindPopup(popup_69a95c5829ad2cf179659b0837b32bf3)
+        ;
+
+        
+    
+    
+            var circle_marker_2ebbceaa3b5f7c3b16ee1746d6795cce = L.circleMarker(
+                [42.194401, -72.555603],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_d4515b192f7c7b511d67dd5cf3bd3eb1 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_86503f207ada14f9f0926c22dbd5c464 = $(`<div id="html_86503f207ada14f9f0926c22dbd5c464" style="width: 100.0%; height: 100.0%;"><b>Chicopee</b> (MA)<br>PM2.5 mean 2022-2025: 6.0 ug/m3<br>ozone summer mean: 41.6 ppb</div>`)[0];
+                popup_d4515b192f7c7b511d67dd5cf3bd3eb1.setContent(html_86503f207ada14f9f0926c22dbd5c464);
+            
+        
+
+        circle_marker_2ebbceaa3b5f7c3b16ee1746d6795cce.bindPopup(popup_d4515b192f7c7b511d67dd5cf3bd3eb1)
+        ;
+
+        
+    
+    
+            var circle_marker_8b50e7703e4cba3ad4c346f0cda61965 = L.circleMarker(
+                [42.120248, -72.58499],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_a03ce1c53ba044cf28ab2a8bb07fef6d = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_82e6559efc60bf8f2ec03916c07a4053 = $(`<div id="html_82e6559efc60bf8f2ec03916c07a4053" style="width: 100.0%; height: 100.0%;"><b>Springfield</b> (MA)<br>PM2.5 mean 2022-2025: 7.3 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_a03ce1c53ba044cf28ab2a8bb07fef6d.setContent(html_82e6559efc60bf8f2ec03916c07a4053);
+            
+        
+
+        circle_marker_8b50e7703e4cba3ad4c346f0cda61965.bindPopup(popup_a03ce1c53ba044cf28ab2a8bb07fef6d)
+        ;
+
+        
+    
+    
+            var circle_marker_fc9a08a0f1d83228e80fa90d7ce9e241 = L.circleMarker(
+                [42.298302, -72.334396],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_66231cab47b7391f1dcf1b7deb2a8386 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_16733753a082e83f4f6e5b530a166cb4 = $(`<div id="html_16733753a082e83f4f6e5b530a166cb4" style="width: 100.0%; height: 100.0%;"><b>Ware</b> (MA)<br>PM2.5 mean 2022-2025: 5.5 ug/m3<br>ozone summer mean: 39.7 ppb</div>`)[0];
+                popup_66231cab47b7391f1dcf1b7deb2a8386.setContent(html_16733753a082e83f4f6e5b530a166cb4);
+            
+        
+
+        circle_marker_fc9a08a0f1d83228e80fa90d7ce9e241.bindPopup(popup_66231cab47b7391f1dcf1b7deb2a8386)
+        ;
+
+        
+    
+    
+            var circle_marker_3e9ef81c05ed4c19d0a58c52b9f6c6f9 = L.circleMarker(
+                [40.85355, -73.9661],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_6671fac2dbf72bc5fa8924941dbb4c7f = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_0eb072e30b3a0da899c3467105e51061 = $(`<div id="html_0eb072e30b3a0da899c3467105e51061" style="width: 100.0%; height: 100.0%;"><b>Fort Lee Near Road</b> (NJ)<br>PM2.5 mean 2022-2025: 7.7 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_6671fac2dbf72bc5fa8924941dbb4c7f.setContent(html_0eb072e30b3a0da899c3467105e51061);
+            
+        
+
+        circle_marker_3e9ef81c05ed4c19d0a58c52b9f6c6f9.bindPopup(popup_6671fac2dbf72bc5fa8924941dbb4c7f)
+        ;
+
+        
+    
+    
+            var circle_marker_56989ce40d962e7cd8ab73eca6e64b78 = L.circleMarker(
+                [39.934446, -75.125291],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_d9399c75534cc1d0f4286af4944b3cdf = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_3091346f1af7402236666bcec995a8d0 = $(`<div id="html_3091346f1af7402236666bcec995a8d0" style="width: 100.0%; height: 100.0%;"><b>Camden Spruce St</b> (NJ)<br>PM2.5 mean 2022-2025: 9.2 ug/m3<br>ozone summer mean: 46.3 ppb</div>`)[0];
+                popup_d9399c75534cc1d0f4286af4944b3cdf.setContent(html_3091346f1af7402236666bcec995a8d0);
+            
+        
+
+        circle_marker_56989ce40d962e7cd8ab73eca6e64b78.bindPopup(popup_d9399c75534cc1d0f4286af4944b3cdf)
+        ;
+
+        
+    
+    
+            var circle_marker_23dc07064f4da72fadae5caeae8ddd04 = L.circleMarker(
+                [39.989036, -75.050008],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_151b9fb36537bf208366695392cc07f0 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_2e7bb02d623fa7f7fd7147bc91493a6d = $(`<div id="html_2e7bb02d623fa7f7fd7147bc91493a6d" style="width: 100.0%; height: 100.0%;"><b>Pennsauken PM</b> (NJ)<br>PM2.5 mean 2022-2025: 6.0 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_151b9fb36537bf208366695392cc07f0.setContent(html_2e7bb02d623fa7f7fd7147bc91493a6d);
+            
+        
+
+        circle_marker_23dc07064f4da72fadae5caeae8ddd04.bindPopup(popup_151b9fb36537bf208366695392cc07f0)
+        ;
+
+        
+    
+    
+            var circle_marker_caf049fa6faec139ac6e58ebddcc15c5 = L.circleMarker(
+                [39.800339, -75.21212],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_0c1a0024d8c796dc7f69dedfb1766584 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_f24373639c9cbf616cf4c604dad6426e = $(`<div id="html_f24373639c9cbf616cf4c604dad6426e" style="width: 100.0%; height: 100.0%;"><b>Clarksboro</b> (NJ)<br>PM2.5 mean 2022-2025: 6.9 ug/m3<br>ozone summer mean: 47.3 ppb</div>`)[0];
+                popup_0c1a0024d8c796dc7f69dedfb1766584.setContent(html_f24373639c9cbf616cf4c604dad6426e);
+            
+        
+
+        circle_marker_caf049fa6faec139ac6e58ebddcc15c5.bindPopup(popup_0c1a0024d8c796dc7f69dedfb1766584)
+        ;
+
+        
+    
+    
+            var circle_marker_a186bbb8643741ec748cbb0c953b0b4f = L.circleMarker(
+                [40.770908, -74.036218],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_30a6dabb15826c6eff9932c0431e3dc4 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_4d6a79e09e94758694fca9bdab10479d = $(`<div id="html_4d6a79e09e94758694fca9bdab10479d" style="width: 100.0%; height: 100.0%;"><b>Union City High School</b> (NJ)<br>PM2.5 mean 2022-2025: 6.7 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_30a6dabb15826c6eff9932c0431e3dc4.setContent(html_4d6a79e09e94758694fca9bdab10479d);
+            
+        
+
+        circle_marker_a186bbb8643741ec748cbb0c953b0b4f.bindPopup(popup_30a6dabb15826c6eff9932c0431e3dc4)
+        ;
+
+        
+    
+    
+            var circle_marker_db1dc85015e71a74b3d11284eac87a87 = L.circleMarker(
+                [40.725452, -74.052292],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_58075e3f280d7094332e12a3442e1239 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_0f5d14f2f0879488fd330a6cae5c1b35 = $(`<div id="html_0f5d14f2f0879488fd330a6cae5c1b35" style="width: 100.0%; height: 100.0%;"><b>Jersey City FH</b> (NJ)<br>PM2.5 mean 2022-2025: 7.5 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_58075e3f280d7094332e12a3442e1239.setContent(html_0f5d14f2f0879488fd330a6cae5c1b35);
+            
+        
+
+        circle_marker_db1dc85015e71a74b3d11284eac87a87.bindPopup(popup_58075e3f280d7094332e12a3442e1239)
+        ;
+
+        
+    
+    
+            var circle_marker_0d18bd2755980eab6d986b098ca77df7 = L.circleMarker(
+                [40.515251, -74.806755],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_3ab9c1d9f04a4e6f71b5b639263a9c70 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_221992d97a3b893155b01d1459cafa37 = $(`<div id="html_221992d97a3b893155b01d1459cafa37" style="width: 100.0%; height: 100.0%;"><b>Flemington</b> (NJ)<br>PM2.5 mean 2022-2025: 7.6 ug/m3<br>ozone summer mean: 44.6 ppb</div>`)[0];
+                popup_3ab9c1d9f04a4e6f71b5b639263a9c70.setContent(html_221992d97a3b893155b01d1459cafa37);
+            
+        
+
+        circle_marker_0d18bd2755980eab6d986b098ca77df7.bindPopup(popup_3ab9c1d9f04a4e6f71b5b639263a9c70)
+        ;
+
+        
+    
+    
+            var circle_marker_0352133c0d0be0c9fe5567e885e74894 = L.circleMarker(
+                [40.283092, -74.742645],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_aa3f2c70e48828d87dc209e397780521 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_831dc434adc30a98223221a8ccc0b151 = $(`<div id="html_831dc434adc30a98223221a8ccc0b151" style="width: 100.0%; height: 100.0%;"><b>Rider University</b> (NJ)<br>PM2.5 mean 2022-2025: 7.8 ug/m3<br>ozone summer mean: 46.0 ppb</div>`)[0];
+                popup_aa3f2c70e48828d87dc209e397780521.setContent(html_831dc434adc30a98223221a8ccc0b151);
+            
+        
+
+        circle_marker_0352133c0d0be0c9fe5567e885e74894.bindPopup(popup_aa3f2c70e48828d87dc209e397780521)
+        ;
+
+        
+    
+    
+            var circle_marker_660e3b3d6d44a7db9d5e18794ca1e363 = L.circleMarker(
+                [40.222421, -74.763167],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_1289e3c6a3b0f5d96318d7ff4be68910 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_1c2748526c6ab2cf401aa13c76d87ddf = $(`<div id="html_1c2748526c6ab2cf401aa13c76d87ddf" style="width: 100.0%; height: 100.0%;"><b>Trenton</b> (NJ)<br>PM2.5 mean 2022-2025: 7.4 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_1289e3c6a3b0f5d96318d7ff4be68910.setContent(html_1c2748526c6ab2cf401aa13c76d87ddf);
+            
+        
+
+        circle_marker_660e3b3d6d44a7db9d5e18794ca1e363.bindPopup(popup_1289e3c6a3b0f5d96318d7ff4be68910)
+        ;
+
+        
+    
+    
+            var circle_marker_05935425d75fe5b57c2cdbdf379521d3 = L.circleMarker(
+                [40.462181, -74.429436],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_5f27206e88f5d10a346899aae34ab931 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_47d92744d95af7f45d113fb0aa9d326d = $(`<div id="html_47d92744d95af7f45d113fb0aa9d326d" style="width: 100.0%; height: 100.0%;"><b>Rutgers University</b> (NJ)<br>PM2.5 mean 2022-2025: 6.9 ug/m3<br>ozone summer mean: 44.6 ppb</div>`)[0];
+                popup_5f27206e88f5d10a346899aae34ab931.setContent(html_47d92744d95af7f45d113fb0aa9d326d);
+            
+        
+
+        circle_marker_05935425d75fe5b57c2cdbdf379521d3.bindPopup(popup_5f27206e88f5d10a346899aae34ab931)
+        ;
+
+        
+    
+    
+            var circle_marker_ede18f084a54db1d52d993fb53769f82 = L.circleMarker(
+                [40.787628, -74.6763],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_b0bfd86942816fb5b159b941787199ab = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_13f7a4c3844b54b306f4a3b5fbcbb196 = $(`<div id="html_13f7a4c3844b54b306f4a3b5fbcbb196" style="width: 100.0%; height: 100.0%;"><b>Chester</b> (NJ)<br>PM2.5 mean 2022-2025: 5.0 ug/m3<br>ozone summer mean: 44.6 ppb</div>`)[0];
+                popup_b0bfd86942816fb5b159b941787199ab.setContent(html_13f7a4c3844b54b306f4a3b5fbcbb196);
+            
+        
+
+        circle_marker_ede18f084a54db1d52d993fb53769f82.bindPopup(popup_b0bfd86942816fb5b159b941787199ab)
+        ;
+
+        
+    
+    
+            var circle_marker_e69b98ed98e3fd08a73d70fa6b202fd2 = L.circleMarker(
+                [39.994908, -74.170447],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_c77b2ad347b39f991c801174c1dfc2af = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_49df6ca2a1e610b83f7efefe9463762f = $(`<div id="html_49df6ca2a1e610b83f7efefe9463762f" style="width: 100.0%; height: 100.0%;"><b>Toms River</b> (NJ)<br>PM2.5 mean 2022-2025: 6.7 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_c77b2ad347b39f991c801174c1dfc2af.setContent(html_49df6ca2a1e610b83f7efefe9463762f);
+            
+        
+
+        circle_marker_e69b98ed98e3fd08a73d70fa6b202fd2.bindPopup(popup_c77b2ad347b39f991c801174c1dfc2af)
+        ;
+
+        
+    
+    
+            var circle_marker_bd878bba2e944dbf7d355b7189c5d72c = L.circleMarker(
+                [40.918381, -74.168092],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_fe1f7054e102a0a92a9cc70234e7be3e = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_319e238d6c5250d19b06b54ef5e56d0a = $(`<div id="html_319e238d6c5250d19b06b54ef5e56d0a" style="width: 100.0%; height: 100.0%;"><b>Paterson</b> (NJ)<br>PM2.5 mean 2022-2025: 7.2 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_fe1f7054e102a0a92a9cc70234e7be3e.setContent(html_319e238d6c5250d19b06b54ef5e56d0a);
+            
+        
+
+        circle_marker_bd878bba2e944dbf7d355b7189c5d72c.bindPopup(popup_fe1f7054e102a0a92a9cc70234e7be3e)
+        ;
+
+        
+    
+    
+            var circle_marker_f7c7446faf2a175fdd116949510f61ce = L.circleMarker(
+                [40.641441, -74.208366],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_d273105994ec9c62c67403a2868fecb4 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_b2e8fd332a85badd2841133b092bf657 = $(`<div id="html_b2e8fd332a85badd2841133b092bf657" style="width: 100.0%; height: 100.0%;"><b>Elizabeth Trailer</b> (NJ)<br>PM2.5 mean 2022-2025: 9.0 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_d273105994ec9c62c67403a2868fecb4.setContent(html_b2e8fd332a85badd2841133b092bf657);
+            
+        
+
+        circle_marker_f7c7446faf2a175fdd116949510f61ce.bindPopup(popup_d273105994ec9c62c67403a2868fecb4)
+        ;
+
+        
+    
+    
+            var circle_marker_83b7b63357c90094f9aa8be7710b0671 = L.circleMarker(
+                [40.603943, -74.276176],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_ec2b03de2d5df53714ef9d5516fb4e6d = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_9e06aac220efa78b9dbb4d7e03b35861 = $(`<div id="html_9e06aac220efa78b9dbb4d7e03b35861" style="width: 100.0%; height: 100.0%;"><b>Rahway PM</b> (NJ)<br>PM2.5 mean 2022-2025: 7.6 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_ec2b03de2d5df53714ef9d5516fb4e6d.setContent(html_9e06aac220efa78b9dbb4d7e03b35861);
+            
+        
+
+        circle_marker_83b7b63357c90094f9aa8be7710b0671.bindPopup(popup_ec2b03de2d5df53714ef9d5516fb4e6d)
+        ;
+
+        
+    
+    
+            var circle_marker_68253930b0499253863f2ca962ff3238 = L.circleMarker(
+                [40.924606, -75.067825],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_0bec03d5afaee81ebc9b14f8ccd9cfe5 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_ce266351bd0fa1ce908a63a9e2844f3f = $(`<div id="html_ce266351bd0fa1ce908a63a9e2844f3f" style="width: 100.0%; height: 100.0%;"><b>Columbia</b> (NJ)<br>PM2.5 mean 2022-2025: 6.9 ug/m3<br>ozone summer mean: 37.8 ppb</div>`)[0];
+                popup_0bec03d5afaee81ebc9b14f8ccd9cfe5.setContent(html_ce266351bd0fa1ce908a63a9e2844f3f);
+            
+        
+
+        circle_marker_68253930b0499253863f2ca962ff3238.bindPopup(popup_0bec03d5afaee81ebc9b14f8ccd9cfe5)
+        ;
+
+        
+    
+    
+            var circle_marker_bbba9cfe2bcdd5d0612742a0f33be560 = L.circleMarker(
+                [40.8367, -73.9214],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_eb9c2aa39b498f6bc0579e60d9f052b1 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_aa44f631c49085167ae197854889a2e6 = $(`<div id="html_aa44f631c49085167ae197854889a2e6" style="width: 100.0%; height: 100.0%;"><b>Morrisania</b> (NY)<br>PM2.5 mean 2022-2025: 6.3 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_eb9c2aa39b498f6bc0579e60d9f052b1.setContent(html_aa44f631c49085167ae197854889a2e6);
+            
+        
+
+        circle_marker_bbba9cfe2bcdd5d0612742a0f33be560.bindPopup(popup_eb9c2aa39b498f6bc0579e60d9f052b1)
+        ;
+
+        
+    
+    
+            var circle_marker_bdd7629a713e2a376872dc83d6413cf4 = L.circleMarker(
+                [40.816101, -73.902199],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_3b49e1e0de7458869b43542e2d769230 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_9dfd07b5d93a86bb7620902818f82928 = $(`<div id="html_9dfd07b5d93a86bb7620902818f82928" style="width: 100.0%; height: 100.0%;"><b>Bronx - IS52</b> (NY)<br>PM2.5 mean 2022-2025: 8.2 ug/m3<br>ozone summer mean: 43.3 ppb</div>`)[0];
+                popup_3b49e1e0de7458869b43542e2d769230.setContent(html_9dfd07b5d93a86bb7620902818f82928);
+            
+        
+
+        circle_marker_bdd7629a713e2a376872dc83d6413cf4.bindPopup(popup_3b49e1e0de7458869b43542e2d769230)
+        ;
+
+        
+    
+    
+            var circle_marker_2901c43e6a5618c80c48b999adc2dc8f = L.circleMarker(
+                [40.814701, -73.886703],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_dbeae4ea441552e69013fe7d73b6207c = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_0aab12159f9413d14fe121bac34e8371 = $(`<div id="html_0aab12159f9413d14fe121bac34e8371" style="width: 100.0%; height: 100.0%;"><b>Bronx - IS74</b> (NY)<br>PM2.5 mean 2022-2025: 8.5 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_dbeae4ea441552e69013fe7d73b6207c.setContent(html_0aab12159f9413d14fe121bac34e8371);
+            
+        
+
+        circle_marker_2901c43e6a5618c80c48b999adc2dc8f.bindPopup(popup_dbeae4ea441552e69013fe7d73b6207c)
+        ;
+
+        
+    
+    
+            var circle_marker_9a7e19e3abf5fc1e6ccfbc836573956e = L.circleMarker(
+                [40.641819, -74.018707],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_967d0b473ab54f85c1ecbdc69eacbeed = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_91c7f76b8d03f9ed8eeb93091e4eb9bb = $(`<div id="html_91c7f76b8d03f9ed8eeb93091e4eb9bb" style="width: 100.0%; height: 100.0%;"><b>Bklyn - PS 314</b> (NY)<br>PM2.5 mean 2022-2025: 8.2 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_967d0b473ab54f85c1ecbdc69eacbeed.setContent(html_91c7f76b8d03f9ed8eeb93091e4eb9bb);
+            
+        
+
+        circle_marker_9a7e19e3abf5fc1e6ccfbc836573956e.bindPopup(popup_967d0b473ab54f85c1ecbdc69eacbeed)
+        ;
+
+        
+    
+    
+            var circle_marker_10edb13cdcbfa7a71f2fe8f5552d87cc = L.circleMarker(
+                [40.694401, -73.928596],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_89f685e0bc73c1dfc0e1914db560282e = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_0478e4291c77625a960105007744f0a0 = $(`<div id="html_0478e4291c77625a960105007744f0a0" style="width: 100.0%; height: 100.0%;"><b>Bklyn - PS274</b> (NY)<br>PM2.5 mean 2022-2025: 9.1 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_89f685e0bc73c1dfc0e1914db560282e.setContent(html_0478e4291c77625a960105007744f0a0);
+            
+        
+
+        circle_marker_10edb13cdcbfa7a71f2fe8f5552d87cc.bindPopup(popup_89f685e0bc73c1dfc0e1914db560282e)
+        ;
+
+        
+    
+    
+            var circle_marker_0f5bfd3f38b80fef0da13097b0b34428 = L.circleMarker(
+                [40.7447, -73.5869],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_8ba8f1ec234a687fb5bd449f6950e8bc = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_c6edf7edd1def78c0fbe40ac7d498494 = $(`<div id="html_c6edf7edd1def78c0fbe40ac7d498494" style="width: 100.0%; height: 100.0%;"><b>Eisenhower Park</b> (nan)<br>PM2.5 mean 2022-2025: 6.1 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_8ba8f1ec234a687fb5bd449f6950e8bc.setContent(html_c6edf7edd1def78c0fbe40ac7d498494);
+            
+        
+
+        circle_marker_0f5bfd3f38b80fef0da13097b0b34428.bindPopup(popup_8ba8f1ec234a687fb5bd449f6950e8bc)
+        ;
+
+        
+    
+    
+            var circle_marker_e1c825f6ff7bf212a0083c08b10b7366 = L.circleMarker(
+                [40.8492, -73.9319],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_6a2034ae1136de863f8add34945c865b = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_ed5b34c0ca4b2c6306c46f46342abd53 = $(`<div id="html_ed5b34c0ca4b2c6306c46f46342abd53" style="width: 100.0%; height: 100.0%;"><b>Manhattan/IS143</b> (NY)<br>PM2.5 mean 2022-2025: 7.6 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_6a2034ae1136de863f8add34945c865b.setContent(html_ed5b34c0ca4b2c6306c46f46342abd53);
+            
+        
+
+        circle_marker_e1c825f6ff7bf212a0083c08b10b7366.bindPopup(popup_6a2034ae1136de863f8add34945c865b)
+        ;
+
+        
+    
+    
+            var circle_marker_1036edd9ce49d9693a5ddc6dae94c791 = L.circleMarker(
+                [40.8197, -73.9481],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_c624a40980d35f5a2e04b68bfd4cfcc9 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_e51a2deb60ec3add3fcd021287e944ee = $(`<div id="html_e51a2deb60ec3add3fcd021287e944ee" style="width: 100.0%; height: 100.0%;"><b>CCNY</b> (NY)<br>PM2.5 mean 2022-2025: 7.0 ug/m3<br>ozone summer mean: 44.1 ppb</div>`)[0];
+                popup_c624a40980d35f5a2e04b68bfd4cfcc9.setContent(html_e51a2deb60ec3add3fcd021287e944ee);
+            
+        
+
+        circle_marker_1036edd9ce49d9693a5ddc6dae94c791.bindPopup(popup_c624a40980d35f5a2e04b68bfd4cfcc9)
+        ;
+
+        
+    
+    
+            var circle_marker_47d32c0afd836de310b230ba9603b467 = L.circleMarker(
+                [41.4994, -74.0097],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_00c23b9fcedb6edc0d118986fe51f81c = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_dca0aa7e018a35feb085fdcd9da98b17 = $(`<div id="html_dca0aa7e018a35feb085fdcd9da98b17" style="width: 100.0%; height: 100.0%;"><b>Newburgh</b> (NY)<br>PM2.5 mean 2022-2025: 6.0 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_00c23b9fcedb6edc0d118986fe51f81c.setContent(html_dca0aa7e018a35feb085fdcd9da98b17);
+            
+        
+
+        circle_marker_47d32c0afd836de310b230ba9603b467.bindPopup(popup_00c23b9fcedb6edc0d118986fe51f81c)
+        ;
+
+        
+    
+    
+            var circle_marker_85475b61ad0aa9049355f7260b13c32f = L.circleMarker(
+                [40.7269, -73.8933],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_fec68b944c128491b15caecab9eb395d = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_c4ec0f04a75eb12b0c16c3b8cb717e97 = $(`<div id="html_c4ec0f04a75eb12b0c16c3b8cb717e97" style="width: 100.0%; height: 100.0%;"><b>Maspeth</b> (NY)<br>PM2.5 mean 2022-2025: 6.8 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_fec68b944c128491b15caecab9eb395d.setContent(html_c4ec0f04a75eb12b0c16c3b8cb717e97);
+            
+        
+
+        circle_marker_85475b61ad0aa9049355f7260b13c32f.bindPopup(popup_fec68b944c128491b15caecab9eb395d)
+        ;
+
+        
+    
+    
+            var circle_marker_0ab5a64f3693ec1ed76b40fc80f88415 = L.circleMarker(
+                [40.7375, -73.8244],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_e5ba76ba77e0f5453b0b3c78f57ad6fe = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_c631efd0cee638b0a7e5c0c7f5a29448 = $(`<div id="html_c631efd0cee638b0a7e5c0c7f5a29448" style="width: 100.0%; height: 100.0%;"><b>Queens</b> (NY)<br>PM2.5 mean 2022-2025: 8.9 ug/m3<br>ozone summer mean: 45.8 ppb</div>`)[0];
+                popup_e5ba76ba77e0f5453b0b3c78f57ad6fe.setContent(html_c631efd0cee638b0a7e5c0c7f5a29448);
+            
+        
+
+        circle_marker_0ab5a64f3693ec1ed76b40fc80f88415.bindPopup(popup_e5ba76ba77e0f5453b0b3c78f57ad6fe)
+        ;
+
+        
+    
+    
+            var circle_marker_d6e114d00cc04914ea051f95a9433d43 = L.circleMarker(
+                [40.739264, -73.817694],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_711dcb1133c4abb9bb36d88e3dc87a83 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_df96c29534529cbb571ac1acb2c1609a = $(`<div id="html_df96c29534529cbb571ac1acb2c1609a" style="width: 100.0%; height: 100.0%;"><b>Queens Near-road</b> (NY)<br>PM2.5 mean 2022-2025: 8.0 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_711dcb1133c4abb9bb36d88e3dc87a83.setContent(html_df96c29534529cbb571ac1acb2c1609a);
+            
+        
+
+        circle_marker_d6e114d00cc04914ea051f95a9433d43.bindPopup(popup_711dcb1133c4abb9bb36d88e3dc87a83)
+        ;
+
+        
+    
+    
+            var circle_marker_509b9389e98121073db35fe25c023174 = L.circleMarker(
+                [40.63306, -74.137156],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_fd21e775611f0519d618c8ea8747e86b = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_b4dfd89bf155b5e60a3be2175e4c55a3 = $(`<div id="html_b4dfd89bf155b5e60a3be2175e4c55a3" style="width: 100.0%; height: 100.0%;"><b>Port Richmond</b> (NY)<br>PM2.5 mean 2022-2025: 5.9 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_fd21e775611f0519d618c8ea8747e86b.setContent(html_b4dfd89bf155b5e60a3be2175e4c55a3);
+            
+        
+
+        circle_marker_509b9389e98121073db35fe25c023174.bindPopup(popup_fd21e775611f0519d618c8ea8747e86b)
+        ;
+
+        
+    
+    
+            var circle_marker_87d0c2d36d249d4f64c9427a40c9dc3c = L.circleMarker(
+                [40.5802, -74.1994],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_8ff5e2c06ed1c377d87653c83dc8e011 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_bdedce98631899786d6ed5d8862b249b = $(`<div id="html_bdedce98631899786d6ed5d8862b249b" style="width: 100.0%; height: 100.0%;"><b>Fresh Kills</b> (NY)<br>PM2.5 mean 2022-2025: 6.8 ug/m3<br>ozone summer mean: 42.9 ppb</div>`)[0];
+                popup_8ff5e2c06ed1c377d87653c83dc8e011.setContent(html_bdedce98631899786d6ed5d8862b249b);
+            
+        
+
+        circle_marker_87d0c2d36d249d4f64c9427a40c9dc3c.bindPopup(popup_8ff5e2c06ed1c377d87653c83dc8e011)
+        ;
+
+        
+    
+    
+            var circle_marker_382a9ec94f40a174edd9b26d3bf18254 = L.circleMarker(
+                [41.182079, -74.028191],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_2aebc73544d4322c4d6f51dacef2784d = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_616c5b3f2a17e0e1385bbf24edb59bfc = $(`<div id="html_616c5b3f2a17e0e1385bbf24edb59bfc" style="width: 100.0%; height: 100.0%;"><b>Rockland Cty</b> (NY)<br>PM2.5 mean 2022-2025: 5.3 ug/m3<br>ozone summer mean: 42.2 ppb</div>`)[0];
+                popup_2aebc73544d4322c4d6f51dacef2784d.setContent(html_616c5b3f2a17e0e1385bbf24edb59bfc);
+            
+        
+
+        circle_marker_382a9ec94f40a174edd9b26d3bf18254.bindPopup(popup_2aebc73544d4322c4d6f51dacef2784d)
+        ;
+
+        
+    
+    
+            var circle_marker_c37690802520a99a94ee220fa1044259 = L.circleMarker(
+                [40.8278, -73.0575],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_3918fb960c9c53a21952c8e520c8dc1c = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_d5a00763cca37cb8e20b7ffb98750883 = $(`<div id="html_d5a00763cca37cb8e20b7ffb98750883" style="width: 100.0%; height: 100.0%;"><b>Holtsville</b> (NY)<br>PM2.5 mean 2022-2025: 6.2 ug/m3<br>ozone summer mean: 44.4 ppb</div>`)[0];
+                popup_3918fb960c9c53a21952c8e520c8dc1c.setContent(html_d5a00763cca37cb8e20b7ffb98750883);
+            
+        
+
+        circle_marker_c37690802520a99a94ee220fa1044259.bindPopup(popup_3918fb960c9c53a21952c8e520c8dc1c)
+        ;
+
+        
+    
+    
+            var circle_marker_4d08abf3f165e32d84bca4dd986f2182 = L.circleMarker(
+                [41.0522, -73.7642],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_dd7b7fa34ff4a86b3c94c5483596cf02 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_b9cd90a2e5de539421828a3d72dcbe68 = $(`<div id="html_b9cd90a2e5de539421828a3d72dcbe68" style="width: 100.0%; height: 100.0%;"><b>White Plains</b> (NY)<br>PM2.5 mean 2022-2025: 5.5 ug/m3<br>ozone summer mean: 43.6 ppb</div>`)[0];
+                popup_dd7b7fa34ff4a86b3c94c5483596cf02.setContent(html_b9cd90a2e5de539421828a3d72dcbe68);
+            
+        
+
+        circle_marker_4d08abf3f165e32d84bca4dd986f2182.bindPopup(popup_dd7b7fa34ff4a86b3c94c5483596cf02)
+        ;
+
+        
+    
+    
+            var circle_marker_450806f7afde6c8668fe9c483f6bec34 = L.circleMarker(
+                [40.3833, -75.9686],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_a1567d151456ef87188f1048fbc47a2c = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_a96dd519c76fbab5904d6060ef0d7439 = $(`<div id="html_a96dd519c76fbab5904d6060ef0d7439" style="width: 100.0%; height: 100.0%;"><b>Reading Airport</b> (PA)<br>PM2.5 mean 2022-2025: 8.3 ug/m3<br>ozone summer mean: 45.7 ppb</div>`)[0];
+                popup_a1567d151456ef87188f1048fbc47a2c.setContent(html_a96dd519c76fbab5904d6060ef0d7439);
+            
+        
+
+        circle_marker_450806f7afde6c8668fe9c483f6bec34.bindPopup(popup_a1567d151456ef87188f1048fbc47a2c)
+        ;
+
+        
+    
+    
+            var circle_marker_3452033bb34a27100b94b7394e147dd9 = L.circleMarker(
+                [39.8344, -75.7678],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_ad5fdd5f17a3b0cab4898eec0a8e4e2f = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_4efd74de8faf5c73354c0b87c0d7b7d2 = $(`<div id="html_4efd74de8faf5c73354c0b87c0d7b7d2" style="width: 100.0%; height: 100.0%;"><b>New Garden</b> (PA)<br>PM2.5 mean 2022-2025: 8.1 ug/m3<br>ozone summer mean: 45.3 ppb</div>`)[0];
+                popup_ad5fdd5f17a3b0cab4898eec0a8e4e2f.setContent(html_4efd74de8faf5c73354c0b87c0d7b7d2);
+            
+        
+
+        circle_marker_3452033bb34a27100b94b7394e147dd9.bindPopup(popup_ad5fdd5f17a3b0cab4898eec0a8e4e2f)
+        ;
+
+        
+    
+    
+            var circle_marker_70255363758466988bf8abd97a31c595 = L.circleMarker(
+                [39.8356, -75.3725],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_13e6a4c59b02aa7b37b09d8261d8b558 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_a4697b96d1f443e7f85940b567be46d2 = $(`<div id="html_a4697b96d1f443e7f85940b567be46d2" style="width: 100.0%; height: 100.0%;"><b>Chester</b> (PA)<br>PM2.5 mean 2022-2025: 9.0 ug/m3<br>ozone summer mean: 47.1 ppb</div>`)[0];
+                popup_13e6a4c59b02aa7b37b09d8261d8b558.setContent(html_a4697b96d1f443e7f85940b567be46d2);
+            
+        
+
+        circle_marker_70255363758466988bf8abd97a31c595.bindPopup(popup_13e6a4c59b02aa7b37b09d8261d8b558)
+        ;
+
+        
+    
+    
+            var circle_marker_806e4c06ac53e4db8d4937d7917cfd8f = L.circleMarker(
+                [39.818715, -75.413973],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_6f69e9db7f44c3fa8e25c453df7c9121 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_d9fe3088ad8a7495927d22de1032b247 = $(`<div id="html_d9fe3088ad8a7495927d22de1032b247" style="width: 100.0%; height: 100.0%;"><b>Marcus Hook</b> (PA)<br>PM2.5 mean 2022-2025: 8.4 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_6f69e9db7f44c3fa8e25c453df7c9121.setContent(html_d9fe3088ad8a7495927d22de1032b247);
+            
+        
+
+        circle_marker_806e4c06ac53e4db8d4937d7917cfd8f.bindPopup(popup_6f69e9db7f44c3fa8e25c453df7c9121)
+        ;
+
+        
+    
+    
+            var circle_marker_8bd36064269cf441c32f508b469757ec = L.circleMarker(
+                [41.4428, -75.6231],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_551e567114d98c1bf31a8054c1d31d5d = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_1543939288f03cd706a647aae9cd7075 = $(`<div id="html_1543939288f03cd706a647aae9cd7075" style="width: 100.0%; height: 100.0%;"><b>Scranton</b> (PA)<br>PM2.5 mean 2022-2025: 8.0 ug/m3<br>ozone summer mean: 38.2 ppb</div>`)[0];
+                popup_551e567114d98c1bf31a8054c1d31d5d.setContent(html_1543939288f03cd706a647aae9cd7075);
+            
+        
+
+        circle_marker_8bd36064269cf441c32f508b469757ec.bindPopup(popup_551e567114d98c1bf31a8054c1d31d5d)
+        ;
+
+        
+    
+    
+            var circle_marker_34e753ec8ac384c86adf4b0a1f8f4821 = L.circleMarker(
+                [40.6119, -75.4325],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_73bada2fdb28624ec02f87f5973238df = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_3f2efaf6fd9a2b07c9cf305f1a6beac7 = $(`<div id="html_3f2efaf6fd9a2b07c9cf305f1a6beac7" style="width: 100.0%; height: 100.0%;"><b>Allentown</b> (PA)<br>PM2.5 mean 2022-2025: 7.9 ug/m3<br>ozone summer mean: 43.3 ppb</div>`)[0];
+                popup_73bada2fdb28624ec02f87f5973238df.setContent(html_3f2efaf6fd9a2b07c9cf305f1a6beac7);
+            
+        
+
+        circle_marker_34e753ec8ac384c86adf4b0a1f8f4821.bindPopup(popup_73bada2fdb28624ec02f87f5973238df)
+        ;
+
+        
+    
+    
+            var circle_marker_24347d95b88f76c1dd20ecf8c2a2f1f3 = L.circleMarker(
+                [40.1122, -75.3092],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_814962708c67e170b1f0db69de98df97 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_8284a32982c34540c5b037c23af79b88 = $(`<div id="html_8284a32982c34540c5b037c23af79b88" style="width: 100.0%; height: 100.0%;"><b>Norristown</b> (PA)<br>PM2.5 mean 2022-2025: 8.0 ug/m3<br>ozone summer mean: 45.1 ppb</div>`)[0];
+                popup_814962708c67e170b1f0db69de98df97.setContent(html_8284a32982c34540c5b037c23af79b88);
+            
+        
+
+        circle_marker_24347d95b88f76c1dd20ecf8c2a2f1f3.bindPopup(popup_814962708c67e170b1f0db69de98df97)
+        ;
+
+        
+    
+    
+            var circle_marker_b93e7d108af889c9100b12850eb0b113 = L.circleMarker(
+                [40.6281, -75.3411],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_a82286fb4d9d02a8720fc91dce3d4669 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_822b89dedb5b258f0aa8b60ddb469e05 = $(`<div id="html_822b89dedb5b258f0aa8b60ddb469e05" style="width: 100.0%; height: 100.0%;"><b>Freemansburg</b> (PA)<br>PM2.5 mean 2022-2025: 8.2 ug/m3<br>ozone summer mean: 44.4 ppb</div>`)[0];
+                popup_a82286fb4d9d02a8720fc91dce3d4669.setContent(html_822b89dedb5b258f0aa8b60ddb469e05);
+            
+        
+
+        circle_marker_b93e7d108af889c9100b12850eb0b113.bindPopup(popup_a82286fb4d9d02a8720fc91dce3d4669)
+        ;
+
+        
+    
+    
+            var circle_marker_98c4a43c6513ebd9c911db7a40a81f47 = L.circleMarker(
+                [39.991389, -75.080833],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_c9071e20549b34aa9d8118c325621d16 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_a17095039709f07087dd24ecd853c36a = $(`<div id="html_a17095039709f07087dd24ecd853c36a" style="width: 100.0%; height: 100.0%;"><b>NEW</b> (PA)<br>PM2.5 mean 2022-2025: 9.2 ug/m3<br>ozone summer mean: 46.9 ppb</div>`)[0];
+                popup_c9071e20549b34aa9d8118c325621d16.setContent(html_a17095039709f07087dd24ecd853c36a);
+            
+        
+
+        circle_marker_98c4a43c6513ebd9c911db7a40a81f47.bindPopup(popup_c9071e20549b34aa9d8118c325621d16)
+        ;
+
+        
+    
+    
+            var circle_marker_8b4b6841998a32b4fa9cac2d1a255b0f = L.circleMarker(
+                [39.922516, -75.186783],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_8dcfb295500f49adb9b484b6c270d8f4 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_da4af54eb9c6b35c02bfa27809b1f966 = $(`<div id="html_da4af54eb9c6b35c02bfa27809b1f966" style="width: 100.0%; height: 100.0%;"><b>RIT</b> (PA)<br>PM2.5 mean 2022-2025: 8.9 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_8dcfb295500f49adb9b484b6c270d8f4.setContent(html_da4af54eb9c6b35c02bfa27809b1f966);
+            
+        
+
+        circle_marker_8b4b6841998a32b4fa9cac2d1a255b0f.bindPopup(popup_8dcfb295500f49adb9b484b6c270d8f4)
+        ;
+
+        
+    
+    
+            var circle_marker_a483b5b674e47e25528cfe2b6e593249 = L.circleMarker(
+                [39.9603, -75.1424],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_377c7edaf1a290eab8c7822fd1054873 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_42ca850ffe314402c584bde287177d78 = $(`<div id="html_42ca850ffe314402c584bde287177d78" style="width: 100.0%; height: 100.0%;"><b>FAB</b> (PA)<br>PM2.5 mean 2022-2025: 9.0 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_377c7edaf1a290eab8c7822fd1054873.setContent(html_42ca850ffe314402c584bde287177d78);
+            
+        
+
+        circle_marker_a483b5b674e47e25528cfe2b6e593249.bindPopup(popup_377c7edaf1a290eab8c7822fd1054873)
+        ;
+
+        
+    
+    
+            var circle_marker_f9413b53768fe2919da609afd0d65cc6 = L.circleMarker(
+                [40.054171, -74.985166],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FFFF00", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_69f9bc4786256e5e407cbc680407ef9f = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_ad3c7e8c6612cd09a11421fe9502e2f4 = $(`<div id="html_ad3c7e8c6612cd09a11421fe9502e2f4" style="width: 100.0%; height: 100.0%;"><b>TOR</b> (PA)<br>PM2.5 mean 2022-2025: 9.9 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_69f9bc4786256e5e407cbc680407ef9f.setContent(html_ad3c7e8c6612cd09a11421fe9502e2f4);
+            
+        
+
+        circle_marker_f9413b53768fe2919da609afd0d65cc6.bindPopup(popup_69f9bc4786256e5e407cbc680407ef9f)
+        ;
+
+        
+    
+    
+            var circle_marker_b9085f6972e13548c1fd04465e830c16 = L.circleMarker(
+                [41.867336, -75.686602],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_9d6dbbe4f2a072c5fcf22b009130f885 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_3d089651a8cf340a7d4cf46b55440614 = $(`<div id="html_3d089651a8cf340a7d4cf46b55440614" style="width: 100.0%; height: 100.0%;"><b>New Milford</b> (PA)<br>PM2.5 mean 2022-2025: 5.8 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_9d6dbbe4f2a072c5fcf22b009130f885.setContent(html_3d089651a8cf340a7d4cf46b55440614);
+            
+        
+
+        circle_marker_b9085f6972e13548c1fd04465e830c16.bindPopup(popup_9d6dbbe4f2a072c5fcf22b009130f885)
+        ;
+
+        
+    
+    
+            var circle_marker_324f0ceec2650af5288f72cb4304b729 = L.circleMarker(
+                [41.605244, -75.95774],
+                {"bubblingMouseEvents": true, "color": "#222222", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00E400", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 0.8}
+            ).addTo(feature_group_1264d4fc0abd6d619920acde4f238368);
+        
+    
+        var popup_6cbb504b65a73ce78a27ceefa1db4c6c = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_c0ab1193186bc77afa5d71038633ee52 = $(`<div id="html_c0ab1193186bc77afa5d71038633ee52" style="width: 100.0%; height: 100.0%;"><b>Tunkhannock</b> (PA)<br>PM2.5 mean 2022-2025: 5.8 ug/m3<br>ozone summer mean: nan ppb</div>`)[0];
+                popup_6cbb504b65a73ce78a27ceefa1db4c6c.setContent(html_c0ab1193186bc77afa5d71038633ee52);
+            
+        
+
+        circle_marker_324f0ceec2650af5288f72cb4304b729.bindPopup(popup_6cbb504b65a73ce78a27ceefa1db4c6c)
+        ;
+
+        
+    
+    
+            feature_group_1264d4fc0abd6d619920acde4f238368.addTo(map_fdd5a5e8933a1dc0d0da5d92b1c0f05f);
+        
+    
+        function geo_json_bc8779766d748ec6a4e59472428cee26_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#333333", "fillOpacity": 0, "weight": 1.2};
+            }
+        }
+
+        function geo_json_bc8779766d748ec6a4e59472428cee26_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_bc8779766d748ec6a4e59472428cee26 = L.geoJson(null, {
+                onEachFeature: geo_json_bc8779766d748ec6a4e59472428cee26_onEachFeature,
+            
+                style: geo_json_bc8779766d748ec6a4e59472428cee26_styler,
+            ...{
+}
+        });
+
+        function geo_json_bc8779766d748ec6a4e59472428cee26_add (data) {
+            geo_json_bc8779766d748ec6a4e59472428cee26
+                .addData(data);
+        }
+            geo_json_bc8779766d748ec6a4e59472428cee26_add({"features": [{"geometry": {"coordinates": [[[-73.78282630099994, 40.87604401200008], [-73.78815670499995, 40.87177155200004], [-73.79991614499994, 40.872259833000044], [-73.81167558499993, 40.87103913000004], [-73.81696529899995, 40.86200592700004], [-73.81991030099994, 40.83912980200006], [-73.80505885699995, 40.826147183000046], [-73.79768506399995, 40.813193685000044], [-73.82972805299994, 40.810897622000084], [-73.86602793399993, 40.81183751700007], [-73.89383263199994, 40.80385336200004], [-73.92682857999995, 40.804795640000066], [-73.93228105399993, 40.81777578300006], [-73.93228105399993, 40.82558828300006], [-73.92577063699991, 40.836004950000074], [-73.9153539699999, 40.85683828300006], [-73.90884355399993, 40.86855703300006], [-73.91274980399993, 40.88157786700003], [-73.92186438699991, 40.886786200000074], [-73.90727611626663, 40.913523064914344], [-73.9072761159915, 40.913523064809404], [-73.83839075199995, 40.89405871900004], [-73.7938190829999, 40.88364517800005], [-73.78282630099994, 40.87604401200008]]], "type": "Polygon"}, "id": "0", "properties": {"borough": "Bronx", "days \u003e 15 ug/m3": 14, "fips": "36005", "mean PM2.5 2025": 6.915473444216895, "person-days \u003e WHO (millions)": 20.617156, "population 2020": 1472654, "population_2020": 1472654}, "type": "Feature"}, {"geometry": {"coordinates": [[[-73.9333796869999, 40.79718659100007], [-73.9464247059999, 40.777234373000056], [-73.97221905799995, 40.740679303000036], [-73.97229342899993, 40.72720272100008], [-73.97580563699995, 40.714012798000056], [-74.0022273429999, 40.70404694200005], [-74.0169164699999, 40.699286200000074], [-74.01197714499995, 40.73003812700006], [-74.00315549699991, 40.75587118900006], [-73.98696855399993, 40.77871328300006], [-73.93915768099993, 40.85423411700009], [-73.93281002499992, 40.868841864000046], [-73.92804928299995, 40.87750885600008], [-73.91795813699991, 40.875067450000074], [-73.91665605399993, 40.863348700000074], [-73.92967688699991, 40.843817450000074], [-73.9387914699999, 40.828192450000074], [-73.94009355399993, 40.81386953300006], [-73.9333796869999, 40.79718659100007]]], "type": "Polygon"}, "id": "1", "properties": {"borough": "Manhattan", "days \u003e 15 ug/m3": 19, "fips": "36061", "mean PM2.5 2025": 7.053237510151115, "person-days \u003e WHO (millions)": 32.190769, "population 2020": 1694251, "population_2020": 1694251}, "type": "Feature"}, {"geometry": {"coordinates": [[[-74.12608801999994, 40.63349030200004], [-74.11025956899994, 40.63776276200008], [-74.09732011599993, 40.64350006700005], [-74.08353630699992, 40.64951799000005], [-74.07671570399992, 40.64874448200004], [-74.07305214299993, 40.64437225900008], [-74.0714502319999, 40.63803071600006], [-74.07461513599992, 40.63403299500004], [-74.07194127799994, 40.62333169100009], [-74.06145120299993, 40.614608642000064], [-74.05356873199992, 40.60270386700006], [-74.10210265499995, 40.55457049200004], [-74.13391798399994, 40.53266801500007], [-74.13967417999993, 40.53464420700004], [-74.14803661199994, 40.53462906400006], [-74.16316421199991, 40.527446857000086], [-74.17985499199995, 40.519861493000064], [-74.1923614449999, 40.51148853400008], [-74.20906902399992, 40.509462598000084], [-74.22836888899991, 40.50225778300006], [-74.24298365399994, 40.49943456200003], [-74.25083095699995, 40.50139666600006], [-74.25294418099992, 40.50735441300009], [-74.24825957399992, 40.512937402000034], [-74.23939217599991, 40.516939516000036], [-74.2389302389999, 40.52725895300006], [-74.2416034609999, 40.539165454000056], [-74.23275923299991, 40.54792897400006], [-74.21866523999995, 40.55313248200008], [-74.20719551099995, 40.56031146300006], [-74.2014873839999, 40.56985629600007], [-74.1978945489999, 40.58495639400007], [-74.19435185799995, 40.61276638500004], [-74.19180169999993, 40.62826424300005], [-74.18241904899992, 40.63742243100006], [-74.17092733899995, 40.64341019400007], [-74.15363124899994, 40.63748966700007], [-74.12608801999994, 40.63349030200004]]], "type": "Polygon"}, "id": "2", "properties": {"borough": "Staten Island", "days \u003e 15 ug/m3": 18, "fips": "36085", "mean PM2.5 2025": 6.970026826141958, "person-days \u003e WHO (millions)": 8.923446, "population 2020": 495747, "population_2020": 495747}, "type": "Feature"}, {"geometry": {"coordinates": [[[[-73.90859985299994, 40.78867740900006], [-73.8870943469999, 40.77993432000005], [-73.87030294099992, 40.78231282100006], [-73.86086004999993, 40.776351255000066], [-73.82305398699992, 40.79738222000009], [-73.7789890379999, 40.792176561000076], [-73.75752241799995, 40.77111113500007], [-73.75331491475546, 40.78263847752488], [-73.70217680199994, 40.75287774700007], [-73.70766078899993, 40.72782274900004], [-73.73032477599992, 40.72214874900004], [-73.72598879999993, 40.70624376200004], [-73.7265857989999, 40.651662774000044], [-73.7441172689999, 40.63740248400006], [-73.77141969006664, 40.62331869749988], [-73.78084875899992, 40.62889794200004], [-73.7981288499999, 40.63805934700008], [-73.81541141999992, 40.64562735000004], [-73.82955911499994, 40.648818970000036], [-73.85156373699994, 40.64367007300007], [-73.85565874799994, 40.663793758000054], [-73.87401974499994, 40.69418276000005], [-73.8964957359999, 40.68243877000003], [-73.92147172299991, 40.70899576100004], [-73.92922172999994, 40.727840754000056], [-73.95679623599995, 40.743171457000074], [-73.93023331699993, 40.77312106200009], [-73.90859985299994, 40.78867740900006]]], [[[-73.7523491469999, 40.58565080500006], [-73.76805021099995, 40.58964326600005], [-73.81258960799994, 40.58373571700008], [-73.89711759999994, 40.554678083000056], [-73.93947018499995, 40.54195887100008], [-73.93947888899993, 40.55547703700006], [-73.85054854599991, 40.58088428100007], [-73.7897919639999, 40.60029175300008], [-73.77615696299995, 40.61060752100008], [-73.76880590227057, 40.618545668947434], [-73.74575979399992, 40.61198376300007], [-73.73813477499993, 40.594870023000055], [-73.7523491469999, 40.58565080500006]]]], "type": "MultiPolygon"}, "id": "3", "properties": {"borough": "Queens", "days \u003e 15 ug/m3": 21, "fips": "36081", "mean PM2.5 2025": 7.1990200748181925, "person-days \u003e WHO (millions)": 50.514744, "population 2020": 2405464, "population_2020": 2405464}, "type": "Feature"}, {"geometry": {"coordinates": [[[-74.0143298119022, 40.67884528504588], [-74.00187939799991, 40.690127016000076], [-73.99769661999994, 40.69608738900007], [-73.99058997299994, 40.69977448100008], [-73.98033606699994, 40.70461660400008], [-73.96933548499993, 40.708749400000045], [-73.9593714419999, 40.72466335100006], [-73.95679623599995, 40.743171457000074], [-73.92922172999994, 40.727840754000056], [-73.92147172299991, 40.70899576100004], [-73.8964957359999, 40.68243877000003], [-73.87401974499994, 40.69418276000005], [-73.85565874799994, 40.663793758000054], [-73.85156373699994, 40.64367007300007], [-73.86884869699992, 40.640104301000065], [-73.8772297889999, 40.63613596700009], [-73.88298933099992, 40.63176798100005], [-73.89134680899991, 40.62360260600008], [-73.89293572399993, 40.614289357000075], [-73.88351568099995, 40.600379116000056], [-73.87776110499993, 40.582095511000034], [-73.89188831999991, 40.57693528100003], [-73.8976440479999, 40.583296509000036], [-73.91177001199992, 40.58369742500008], [-73.92641797699991, 40.58369850100007], [-73.93216925099995, 40.57773715600007], [-73.94158293099991, 40.57455758400005], [-73.98812544599991, 40.569370426000035], [-74.00381696399995, 40.57055083700004], [-74.01167382599994, 40.57928827400008], [-74.00069491199991, 40.58327164000008], [-73.99808697299994, 40.58963233900005], [-74.00489548799993, 40.59718203400007], [-74.03002128499992, 40.605497728000046], [-74.03998974599995, 40.61978573400006], [-74.03583478099995, 40.638859386000036], [-74.02381096499994, 40.64920005500005], [-74.01283968699994, 40.66470009400007], [-74.01547925799991, 40.677803734000065], [-74.0143298119022, 40.67884528504588]]], "type": "Polygon"}, "id": "4", "properties": {"borough": "Brooklyn", "days \u003e 15 ug/m3": 22, "fips": "36047", "mean PM2.5 2025": 7.202124625595256, "person-days \u003e WHO (millions)": 60.193628, "population 2020": 2736074, "population_2020": 2736074}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+    geo_json_bc8779766d748ec6a4e59472428cee26.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature => {
+        if (feature === null) {
+            return '';
+        } else if (typeof(feature)=='object') {
+            return JSON.stringify(feature);
+        } else {
+            return feature;
+        }
+    }
+    let fields = ["borough", "mean PM2.5 2025", "days \u003e 15 ug/m3", "population 2020"];
+    let aliases = ["Borough", "Mean PM2.5 2025", "Days above WHO", "Population"];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i].toLocaleString()}</th>
+            
+            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{
+  "sticky": true,
+  "className": "foliumtooltip",
+});
+                     
+    
+            geo_json_bc8779766d748ec6a4e59472428cee26.addTo(map_fdd5a5e8933a1dc0d0da5d92b1c0f05f);
+        
+    
+            var layer_control_adfd7b3103be58b06af40481564e2a23_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_14dc4d470f6a3c7cbfc354d9c1bf7225,
+                },
+                overlays :  {
+                    "PM2.5 mean 2022-2025" : image_overlay_de4d885334982da30726b47dec34631e,
+                    "Ozone summer mean 2022-2025" : image_overlay_e79956c2b726346e79d99a2332dc22c3,
+                    "Expected days PM2.5 \u003e WHO, 2025" : image_overlay_5b3e518b66c437fd83d767f090d97095,
+                    "Forecast AQI 2026-10-24" : image_overlay_184389dba15f7efdfdd3b61662561d08,
+                    "Monitors (PM2.5 2022-2025 mean)" : feature_group_1264d4fc0abd6d619920acde4f238368,
+                    "Boroughs (2025 summary)" : geo_json_bc8779766d748ec6a4e59472428cee26,
+                },
+            };
+            let layer_control_adfd7b3103be58b06af40481564e2a23 = L.control.layers(
+                layer_control_adfd7b3103be58b06af40481564e2a23_layers.base_layers,
+                layer_control_adfd7b3103be58b06af40481564e2a23_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_fdd5a5e8933a1dc0d0da5d92b1c0f05f);
+
+        
+</script>
+</html>
