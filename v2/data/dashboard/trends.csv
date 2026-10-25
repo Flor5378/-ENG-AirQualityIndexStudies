@@ -1,0 +1,5 @@
+pollutant,series,slope,ci_lo,ci_hi,pct_per_year,p_value,unit
+PM2.5,observed,-0.006,-0.05,0.03,-0.09,0.729,µg/m³ per year
+PM2.5,weather-normalised,0.013,-0.03,0.04,0.18,0.616,µg/m³ per year
+Ozone,observed,0.362,0.27,0.45,1.01,0.0,ppb per year
+Ozone,weather-normalised,0.252,0.2,0.3,0.7,0.0,ppb per year
