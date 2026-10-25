@@ -1,0 +1,25 @@
+key,label,value,unit
+val_oz_n,Official ozone AQI values recomputed,159138.0,station-days
+val_oz_exact,Ozone AQI values matched exactly,1.0,share
+val_pm_within,PM2.5 AQI values within one point,0.9995,share
+v1_good,Days rated Good by the v1 reading,0.01,share
+v2_good,"Same days rated Good, correct reading",0.78,share
+corr_before,"Export gases vs EPA monitors, as dated",0.69,correlation
+corr_after,"Export gases vs EPA monitors, shifted one day",0.93,correlation
+flag_oz,"Days of ozone stuck at the AQI ceiling, 2019",157.0,days
+flag_pm,"Days of PM2.5 drift, July 2021 to January 2022",174.0,days
+fill_r2_pm,"Gap filling R², PM2.5",0.94,R²
+fill_r2_oz,"Gap filling R², ozone",0.97,R²
+worst_aqi,"Worst daily AQI, June 7, 2023",229.0,AQI
+worst_pm,City-wide 24 h PM2.5 that day,154.0,µg/m³
+fireworks_pm,PM2.5 added by July 4 fireworks,5.6,µg/m³
+cat_acc,"Next-day AQI category right, with weather forecast",0.83,share
+cat_acc_pers,"Next-day AQI category right, persistence",0.73,share
+raw_cov,Coverage of raw 80% intervals,0.7,share
+benzene_r2,Benzene reference explained by one sensor,0.99998,R²
+lowcost_exact,"Hours with the reference CAQI level, virtual sensors",0.75,share
+lowcost_one,Hours within one CAQI level,0.99,share
+pop_pm,"Population-weighted PM2.5, 2025",7.11,µg/m³
+pop_ratio,Times the WHO annual guideline,1.4,ratio
+n_pm,PM2.5 monitors in the regional network,74.0,monitors
+n_o3,Ozone monitors in the regional network,68.0,monitors

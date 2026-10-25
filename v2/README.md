@@ -82,8 +82,9 @@ v2/
     02_uci_virtual_sensing.ipynb    Italy: v1 audit, virtual sensors, hourly CAQI forecast
     03_geospatial_nyc.ipynb         Maps, spatial benchmark, smoke plume, forecast maps
     py/                             the same notebooks as plain Python (jupytext)
-  scripts/              data download, notebook build, report build
-  data/                 data snapshot (AirNow, NOAA, Natural Earth) and processed outputs
+  scripts/              data download, notebook build, report build, dashboard export
+  data/                 data snapshot (AirNow, NOAA, Natural Earth), processed outputs and
+                        the dashboard files (data/dashboard)
   figures/  maps/       exported figures, animation and interactive maps
   report/               LaTeX report (AQI_v2_report.pdf)
   tests/                unit tests of the engine and models
@@ -100,6 +101,7 @@ python scripts/fetch_weather.py --start 2014-01-01 --end 2026-10-23
 python scripts/fetch_basemap.py
 python scripts/build_notebooks.py            # executes the three notebooks (about 40 min)
 python scripts/make_report.py                # fills and compiles the report
+python scripts/export_dashboard.py           # data files of the interactive dashboard
 ```
 
 The hourly AirNow extracts used in notebook 03 come from:
