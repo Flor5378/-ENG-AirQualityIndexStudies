@@ -189,12 +189,14 @@ fig = plt.figure(figsize=(13.5, 7.4))
 gs = fig.add_gridspec(2, 2, width_ratios=[2.6, 1], hspace=0.62, wspace=0.28)
 axes = [fig.add_subplot(gs[0, 0]), fig.add_subplot(gs[1, 0])]
 axl = fig.add_subplot(gs[:, 1])
+label_offsets = {"pm25": (8, 4), "o3": (8, 4), "no2": (10, 9), "co": (10, -13)}
 for p, color in [("pm25", viz.POLLUTANT_COLORS["pm25"]), ("o3", viz.POLLUTANT_COLORS["o3"]),
                  ("no2", viz.POLLUTANT_COLORS["no2"]), ("co", viz.POLLUTANT_COLORS["co"])]:
     v = lag_corr[p].abs()
     axl.plot(v.index, v, color=color, marker="o", ms=6, markeredgecolor=viz.SURFACE, markeredgewidth=1.5)
-    axl.annotate(f"{viz.POLLUTANT_LABELS[p]}  (vs {'AirNow' if p in ('pm25', 'o3') else 'wind'})",
-                 xy=(v.idxmax(), v.max()), xytext=(6, 6), textcoords="offset points", fontsize=8.5, color=viz.INK)
+    axl.annotate(f"{viz.POLLUTANT_LABELS[p]} (vs {'AirNow' if p in ('pm25', 'o3') else 'wind'})",
+                 xy=(v.idxmax(), v.max()), xytext=label_offsets[p], textcoords="offset points", fontsize=8.5,
+                 color=viz.INK)
 axl.axvline(0, color=viz.AXIS, lw=0.8)
 axl.set_xticks(range(-2, 3), ["-2", "-1", "0", "+1", "+2"])
 axl.set_xlabel("shift applied to the export (days)")
@@ -223,10 +225,11 @@ for a, b in zip(starts, ends):
     ax.text(a + (b - a) / 2, 41.5, "flagged: sensor drift", ha="center", fontsize=8.5, color="#d03b3b")
 ax.set_ylabel("PM2.5 (µg/m³)")
 ax.set_ylim(0, 46)
-viz.title(ax, "PM2.5: six months of sensor drift that v1 read as the dirtiest year of the decade",
+viz.title(ax, "PM2.5: six months of sensor drift, read by v1 as the worst year",
           "export converted back to concentrations and divided by its stable ratio to the network")
 ax.legend(loc="upper left", fontsize=8.5)
 for a in axes:
+    a.xaxis.set_major_locator(mdates.MonthLocator(bymonth=[1, 4, 7, 10]))
     a.xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
 viz.source_note(fig, "Sources: aqicn.org export (v1 dataset); US EPA AirNow daily files, monitors in the five boroughs; "
                 "NOAA GHCN-Daily wind at LGA, JFK, EWR.")
@@ -652,10 +655,10 @@ for ax, target, unit in zip(axes, ["pm25", "o3"], ["µg/m³", "ppb"]):
     tt = np.array([obs_m.index[0].year + 0.04, obs_m.index[-1].year + obs_m.index[-1].month / 12])
     ax.plot([pd.Timestamp(f"{obs_m.index[0].year}-01-15"), obs_m.index[-1]], t["intercept"] + t["slope"] * tt,
             color=viz.INK_2, lw=1.1)
-    sig = "significant" if t["p"] < 0.05 else "not significant"
+    p_txt = "p < 0.001" if t["p"] < 0.001 else f"p = {t['p']:.2f}"
     name = "PM2.5, 24 h mean" if target == "pm25" else "Ozone, daily max 8 h"
-    viz.title(ax, name, f"normalised trend {t['slope']:+.2f} {unit} per year ({100 * t['slope'] / t['mean']:+.1f}%/yr, "
-              f"{sig}, Mann-Kendall p = {t['p']:.3f})")
+    viz.title(ax, name, f"normalised trend {t['slope']:+.2f} {unit}/yr ({100 * t['slope'] / t['mean']:+.1f}%/yr), "
+              f"Mann-Kendall {p_txt}")
     ax.set_ylabel(unit)
     ax.legend(loc="upper left", fontsize=8.5, ncol=2)
     ax.set_ylim(obs_m.min() * 0.8, obs_m.max() * 1.15)
@@ -861,7 +864,7 @@ ax.set_xticks([0, 1], ["NO₂", "PM2.5"])
 ax.set_xlim(-0.6, 1.6)
 ax.set_ylabel("observed vs counterfactual (%)")
 viz.title(ax, "Lockdown vs placebo years", "same window, March 15 to June 30")
-ax.legend(loc="lower right", fontsize=8)
+ax.legend(loc="lower left", fontsize=8)
 ax.grid(axis="x", visible=False)
 viz.save(fig, "01_covid_counterfactual")
 plt.show()
@@ -1085,10 +1088,67 @@ plt.show()
 #   point for PM2.5) and makes the 2024 PM2.5 revision visible: the same air is "Moderate"
 #   far more often under the new rules, and far more often still under WHO benchmarks.
 # * Weather-normalised trends separate emissions from meteorology: PM2.5 has plateaued
-#   around 7 ug/m3 since 2014 while ozone rises by about 1% per year. The lockdown
-#   estimates come with an in-time placebo test, so their size can be judged against the
-#   method's own noise.
+#   around 7 ug/m3 since 2014 while ozone rises by under 1% per year. The lockdown
+#   estimates (NO2 and PM2.5 both well below their counterfactual) come with an in-time
+#   placebo test, so their size can be judged against the method's own noise.
 # * Day-ahead forecasts beat persistence and climatology, and conformal calibration turns
 #   quantile bands into intervals with honest coverage. Smoke onsets remain the hardest
 #   days to forecast from local data alone: a smoke transport forecast would be the next
 #   input.
+
+# %% [markdown]
+# ## 9 · Key results
+#
+# Saved to `data/processed/results_01.json`, from which `scripts/make_report.py` fills
+# the numbers of the report.
+
+# %%
+import json  # noqa: E402
+
+
+def r(x, n=2):
+    return round(float(x), n)
+
+
+chk = pd.DataFrame(checks).set_index("breakpoints")
+sc1 = scores[scores.h == 1].set_index(["target", "setting"])
+cat1 = pd.DataFrame(cat_rows).set_index(["setting", "h"])
+cfs = pd.DataFrame(summary).set_index("pollutant")
+who_year = who / n_days * 365
+res01 = {
+    "nyc_pm_monitors": int(pm_st.shape[1]), "nyc_o3_monitors": int(o3_st.shape[1]),
+    "val_oz_n": int(chk.loc["o3_8h", "station-days"]), "val_oz_exact": r(chk.loc["o3_8h", "exact match (%)"]),
+    "val_pm_within": r(min(chk.loc["pm25_2012", "within 1 point (%)"], chk.loc["pm25", "within 1 point (%)"])),
+    "v1_good": r(share.loc["Good", "v1 (misread)"], 1), "v2_good": r(share.loc["Good", "v2 (correct)"], 1),
+    "flag_oz": int(flag_o3.sum()), "flag_pm": int(flag_pm.sum()), "stable_ratio": r(np.exp(baseline)),
+    "corr_before": r(r_before), "corr_after": r(r_after),
+    "fill_r2_pm": r(cv_pm["linear + boosting"]["R2"]), "fill_r2_oz": r(cv_o3["linear + boosting"]["R2"]),
+    "share_good_2012": r(100 * shares["EPA AQI, 2012 breakpoints"][0].get(0, 0), 0),
+    "share_good_2024": r(100 * shares["EPA AQI, 2024 breakpoints"][0].get(0, 0), 0),
+    "share_good_eea": r(100 * shares["European EAQI (EEA)"][0].get(0, 0), 0),
+    "who_min": int(round(who_year.min())), "who_max": int(round(who_year.max())),
+    "trend_pm": r(trends.query("pollutant == 'pm25' and series == 'weather-normalised'")["slope per year"].iloc[0]),
+    "trend_oz": r(trends.query("pollutant == 'o3' and series == 'weather-normalised'")["slope per year"].iloc[0]),
+    "trend_oz_pct": r(trends.query("pollutant == 'o3' and series == 'weather-normalised'")["% per year"].iloc[0], 1),
+    "trend_oz_p": r(trends.query("pollutant == 'o3' and series == 'weather-normalised'")["Mann-Kendall p"].iloc[0], 4),
+    "worst_pm": r(top.pm25.iloc[0], 0), "worst_aqi": int(top.aqi.iloc[0]),
+    "second_aqi": int(nyc_v2.loc["2026-07-15":"2026-07-18", "aqi"].max()),
+    "fireworks_pm": r(fw_rows[0]["day 0"], 1),
+    "covid_no2": r(cfs.loc["no2", "lockdown effect (%)"], 0), "covid_pm": r(cfs.loc["pm25", "lockdown effect (%)"], 0),
+    "placebo_no2_min": r(cf.query("pollutant == 'no2' and role == 'placebo'")["effect (%)"].min(), 0),
+    "placebo_no2_max": r(cf.query("pollutant == 'no2' and role == 'placebo'")["effect (%)"].max(), 0),
+    "placebo_pm_min": r(cf.query("pollutant == 'pm25' and role == 'placebo'")["effect (%)"].min(), 0),
+    "placebo_pm_max": r(cf.query("pollutant == 'pm25' and role == 'placebo'")["effect (%)"].max(), 0),
+    "raw_cov": r(100 * sc1["coverage 80% (raw)"].mean(), 0),
+    "cat_acc": r(100 * cat1.loc[("with weather forecast", 1), "category accuracy"], 0),
+    "cat_acc_op": r(100 * cat1.loc[("operational", 1), "category accuracy"], 0),
+    "cat_acc_pers": r(100 * cat1.loc[("operational", 1), "accuracy persistence"], 0),
+    "live_date": f"{live_aqi.index[0]:%Y-%m-%d}", "live_aqi": int(live_aqi.AQI.iloc[0]),
+    "live_cat": str(live_aqi.category.iloc[0]), "last_day": f"{LAST_DAY:%Y-%m-%d}",
+}
+for (target, setting), row in sc1.iterrows():
+    key = f"fc_{target}_{'wx' if setting != 'operational' else 'op'}"
+    res01[key] = {"mae": r(row.MAE), "skill_pers": r(100 * row["skill vs persistence"], 0),
+                  "skill_clim": r(100 * row["skill vs climatology"], 0), "cov": r(100 * row["coverage 80% (CQR)"], 0)}
+(data.DATA / "processed" / "results_01.json").write_text(json.dumps(res01, indent=1))
+display(pd.Series({k: v for k, v in res01.items() if not isinstance(v, dict)}))

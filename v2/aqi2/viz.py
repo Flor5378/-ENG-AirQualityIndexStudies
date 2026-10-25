@@ -161,7 +161,7 @@ def calendar_heatmap(ax, s: pd.Series, year: int, cmap=AQI_CMAP, norm=AQI_NORM, 
             first = pd.Timestamp(year=year, month=m, day=1)
             wk = (first.dayofyear - 1 + pd.Timestamp(f"{year}-01-01").dayofweek) // 7
             ax.text(wk + 0.1, 7.35, first.strftime("%b"), fontsize=7, color=INK_2, ha="left", va="bottom")
-    ax.text(-0.6, 3.5, str(year), fontsize=9, color=INK, ha="right", va="center", fontweight="semibold")
+    ax.text(-0.6, 3.5, str(year), fontsize=9, color=INK, ha="right", va="center", fontweight="bold")
 
 
 def aqi_legend(ax, loc="lower center", ncol=6, bbox=(0.5, -0.12), short=True, fontsize=8):
@@ -220,7 +220,17 @@ def overlay_water(ax, layers: dict, water_color: str = WATER, zorder: float = 4,
     ax.set_ylim(y0, y1)
 
 
+def strip_geo_labels(fig):
+    """geopandas labels map axes with the CRS axis names; maps carry no axis labels here."""
+    for ax in fig.axes:
+        if ax.get_xlabel().startswith("Geodetic"):
+            ax.set_xlabel("")
+        if ax.get_ylabel().startswith("Geodetic"):
+            ax.set_ylabel("")
+
+
 def save(fig, name: str, folder: Path = FIGURES, close: bool = False):
+    strip_geo_labels(fig)
     folder.mkdir(parents=True, exist_ok=True)
     path = folder / f"{name}.png"
     fig.savefig(path)

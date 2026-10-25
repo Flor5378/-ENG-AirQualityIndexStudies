@@ -1,0 +1,63 @@
+{
+ "n_pm": 74,
+ "n_o3": 68,
+ "vg_pm_nugget": 53,
+ "vg_o3_nugget": 25,
+ "geo_pm_gp_rmse": 3.23,
+ "geo_pm_gp_r2": 0.936,
+ "geo_pm_best": "Gaussian process",
+ "geo_oz_best": "kriging + boosted residual",
+ "geo_oz_best_rmse": 3.83,
+ "geo_oz_best_r2": 0.904,
+ "geo_rfsi_pm_rmse": 3.52,
+ "pop_pm": 7.11,
+ "pop_ratio": 1.4,
+ "panel_fc": {
+  "pm25": {
+   "station-days": 39533.0,
+   "MAE": 2.546,
+   "MAE persistence": 3.03,
+   "skill vs persistence": 0.16,
+   "R2": 0.474,
+   "coverage 80%": 0.795
+  },
+  "o3": {
+   "station-days": 34226.0,
+   "MAE": 6.404,
+   "MAE persistence": 7.751,
+   "skill vs persistence": 0.174,
+   "R2": 0.465,
+   "coverage 80%": 0.81
+  }
+ },
+ "boroughs": {
+  "Bronx": {
+   "pm": 6.92,
+   "days": 14,
+   "person_days_m": 20.6
+  },
+  "Manhattan": {
+   "pm": 7.05,
+   "days": 19,
+   "person_days_m": 32.2
+  },
+  "Staten Island": {
+   "pm": 6.97,
+   "days": 18,
+   "person_days_m": 8.9
+  },
+  "Queens": {
+   "pm": 7.2,
+   "days": 21,
+   "person_days_m": 50.5
+  },
+  "Brooklyn": {
+   "pm": 7.2,
+   "days": 22,
+   "person_days_m": 60.2
+  }
+ },
+ "live_target_day": "2026-10-24",
+ "live_aqi_min": 33,
+ "live_aqi_max": 55
+}

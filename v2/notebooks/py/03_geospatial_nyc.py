@@ -93,9 +93,12 @@ for idx, marker, color, lab in [(st_pm.index.difference(both), "o", viz.SERIES[0
     ax.scatter(s.lon[~act], s.lat[~act], marker=marker, s=30, facecolor="none", edgecolor=color, lw=1, zorder=4)
 x0, x1, y0, y1 = CITY
 ax.plot([x0, x1, x1, x0, x0], [y0, y0, y1, y1, y0], color=viz.INK_2, lw=0.9, zorder=6)
+import matplotlib.patheffects as pe  # noqa: E402
+HALO = [pe.withStroke(linewidth=3, foreground=viz.SURFACE)]
 for lon_, lat_, name in [(-74.17, 40.735, "Newark"), (-73.20, 41.18, "Bridgeport"), (-72.93, 41.31, "New Haven"),
                          (-75.16, 39.95, "Philadelphia"), (-72.68, 41.76, "Hartford"), (-74.76, 40.22, "Trenton")]:
-    ax.annotate(name, (lon_, lat_), xytext=(5, -9), textcoords="offset points", fontsize=8, color=viz.INK_2)
+    ax.annotate(name, (lon_, lat_), xytext=(5, -9), textcoords="offset points", fontsize=8, color=viz.INK_2,
+                zorder=9, path_effects=HALO)
 ax.legend(loc="lower right", fontsize=8.5, title="monitors (hollow: inactive)", title_fontsize=8)
 viz.title(ax, "The AirNow network around New York", f"daily files 2014 to {LAST_DAY:%Y}; tri-state region")
 ax = axes[1]
@@ -107,7 +110,8 @@ for idx, marker, color in [(st_pm.index.difference(both), "o", viz.SERIES[0]),
     ax.scatter(s.lon, s.lat, marker=marker, s=70, color=color, edgecolor=viz.SURFACE, lw=1.3, zorder=7)
 for _, b in boroughs.iterrows():
     c = b.geometry.representative_point()
-    ax.text(c.x, c.y, b.borough, fontsize=9.5, color=viz.INK_2, ha="center", va="center", zorder=6)
+    ax.text(c.x, c.y, b.borough, fontsize=9.5, color=viz.INK_2, ha="center", va="center", zorder=9,
+            path_effects=HALO)
 viz.title(ax, "Inside the city", "five boroughs (Natural Earth 1:10m)")
 viz.save(fig, "03_network")
 plt.show()
@@ -286,17 +290,20 @@ cb = fig.colorbar(sc, ax=ax, fraction=0.035, pad=0.01)
 cb.set_label("RMSE (\u00b5g/m\u00b3)", fontsize=8.5)
 cb.outline.set_visible(False)
 viz.title(ax, "Where the GP misses", "PM2.5 error at each hidden monitor")
-viz.fig_title(fig, "With 60 monitors, the Gaussian process is the interpolator to beat",
+viz.fig_title(fig, "Geostatistics is hard to beat; a boosted correction helps for ozone",
               "grey: naive baselines; blue: geostatistics; orange: learned interpolators; green: best")
 viz.save(fig, "03_benchmark")
 plt.show()
 
 # %% [markdown]
-# Learning does not pay here: with tens of monitors and a smooth regional field, the
-# information is in the neighbours and a Gaussian process uses it almost optimally. The
-# learned interpolators would need covariates that the monitors do not share (traffic,
-# land use, satellite aerosol) to beat it. Larger errors sit at near-road and edge
-# monitors, whose local sources no regional interpolator can know.
+# With tens of monitors and a smooth regional field, the information is in the
+# neighbours, and geostatistics uses it almost optimally: the Gaussian process wins for
+# PM2.5. A purely learned interpolator (RFSI) is the weakest of the non-naive methods.
+# Learning pays when it *corrects* kriging rather than replaces it: for ozone, a
+# boosted model of the kriging residuals (fed with distance to the urban core and to the
+# coast) edges ahead, because it captures the titration pattern that a stationary
+# covariance cannot. The largest errors sit at near-road and edge monitors, whose local
+# sources no regional interpolator can know.
 
 # %% [markdown]
 # ## 4 · Maps
@@ -321,14 +328,20 @@ def gp_map(values: pd.Series, coords: pd.DataFrame, grid_xy=XY_G, shape=LON.shap
 
 
 def show_field(ax, field, cmap, norm, extent=METRO, boroughs_=True, stations=None, svals=None,
-               lon_vec=None, lat_vec=None):
-    """Raster over land: the field is drawn everywhere, then water is painted on top."""
+               lon_vec=None, lat_vec=None, levels=None):
+    """Raster over land: the field is drawn everywhere, then water is painted on top.
+    With ``levels`` the field is drawn as filled contours (smooth category edges)."""
     lon_vec = lon_g if lon_vec is None else lon_vec
     lat_vec = lat_g if lat_vec is None else lat_vec
     viz.draw_basemap(ax, layers, extent=extent, boroughs=False)
     d = (lon_vec[1] - lon_vec[0]) / 2
-    im = ax.imshow(field, origin="lower", extent=[lon_vec[0] - d, lon_vec[-1] + d, lat_vec[0] - d, lat_vec[-1] + d],
-                   cmap=cmap, norm=norm, interpolation="bilinear", zorder=2)
+    if levels is not None:
+        LONv, LATv = np.meshgrid(lon_vec, lat_vec)
+        im = ax.contourf(LONv, LATv, field, levels=levels, cmap=cmap, norm=norm, zorder=2)
+    else:
+        im = ax.imshow(field, origin="lower", extent=[lon_vec[0] - d, lon_vec[-1] + d, lat_vec[0] - d,
+                                                      lat_vec[-1] + d],
+                       cmap=cmap, norm=norm, interpolation="bilinear", zorder=2)
     ax.set_xlim(extent[0], extent[1])
     ax.set_ylim(extent[2], extent[3])
     viz.overlay_water(ax, layers)
@@ -357,7 +370,7 @@ im = show_field(axes[0], pm_mu, viz.HEAT_CMAP, norm_pm, stations=sites.loc[pm_me
 cb = fig.colorbar(im, ax=axes[0], fraction=0.03, pad=0.01)
 cb.set_label("µg/m³", fontsize=9)
 cb.outline.set_visible(False)
-viz.title(axes[0], "PM2.5, mean 2022 to 2025", "a gradient from the urban core outwards; monitors show near-road peaks")
+viz.title(axes[0], "PM2.5, mean 2022 to 2025", "highest along the urban corridor from Philadelphia to New York")
 norm_o3 = Normalize(*np.nanpercentile(o3_mu[LAND], [2, 98]))
 im = show_field(axes[1], o3_mu, viz.HEAT_CMAP, norm_o3, stations=sites.loc[o3_mean.dropna().index],
                 svals=o3_mean.dropna())
@@ -366,7 +379,7 @@ cb.set_label("ppb", fontsize=9)
 cb.outline.set_visible(False)
 viz.title(axes[1], "Ozone, summer mean of the daily max 8 h, 2022 to 2025",
           "highest downwind of the city, along the Connecticut shore")
-viz.fig_title(fig, "Long-term exposure: particles peak in the city, ozone peaks downwind of it",
+viz.fig_title(fig, "Long-term exposure: particles follow the urban corridor, ozone peaks downwind of the city",
               "Gaussian-process interpolation of monitor means; dots: monitors on the same colour scale (saturated at "
               "the ends)")
 viz.save(fig, "03_longterm_maps")
@@ -376,9 +389,10 @@ plt.show()
 # ### 4.1 · The ozone-NO2 mirror
 #
 # Why is ozone *lower* where traffic is heaviest? Fresh NO emissions destroy ozone
-# (NO + O3 -> NO2 + O2). The sum Ox = O3 + NO2 is conserved by this reaction. Using the
-# 2024 hourly sample (one file every 5 hours, so every hour of the day is represented),
-# monitors measuring both gases show the trade-off: NO2 up, O3 down, Ox nearly flat.
+# (NO + O3 -> NO2 + O2). The reaction conserves the oxidant Ox = O3 + NO2, so titration
+# shifts oxidant from O3 to NO2: pure titration would give a slope of -1 between the two.
+# Using the 2024 hourly sample (one file every 5 hours, so every hour of the day is
+# represented), the monitors that measure both gases show the trade-off.
 
 # %%
 h24, h24s = data.load_airnow_hourly(data.DATA / "airnow" / "airnow_hourly_2024_every5h.csv.gz")
@@ -397,12 +411,13 @@ ax.scatter(pair.NO2, pair.Ox, s=60, color=viz.SERIES[6], edgecolor=viz.SURFACE, 
            label="Ox = O₃ + NO₂")
 xx = np.linspace(pair.NO2.min(), pair.NO2.max(), 10)
 ax.plot(xx, np.polyval(slope, xx), color=viz.SERIES[1], lw=1.2)
-for _, r in pair.iterrows():
-    ax.annotate(r.site, (r.NO2, r.OZONE), xytext=(4, -10), textcoords="offset points", fontsize=7, color=viz.INK_2)
+for _, r in pair.loc[[pair.NO2.idxmax(), pair.NO2.idxmin(), pair.OZONE.idxmax(), pair.OZONE.idxmin()]].iterrows():
+    ax.annotate(r.site, (r.NO2, r.OZONE), xytext=(5, -11), textcoords="offset points", fontsize=7.5,
+                color=viz.INK_2)
 ax.set_xlabel("NO₂, 2024 mean (ppb)")
 ax.set_ylabel("ppb")
 viz.title(ax, "Titration: each ppb of NO₂ costs ozone", f"slope {slope[0]:.2f} ppb O₃ per ppb NO₂ across "
-          f"{len(pair)} monitors")
+          f"{len(pair)} monitors (pure titration: -1)")
 ax.legend(loc="center right", fontsize=8.5)
 ax = axes[1]
 viz.draw_basemap(ax, layers, extent=METRO, boroughs=True)
@@ -497,9 +512,9 @@ worst = pd.Timestamp("2023-06-07")
 z = PM.loc[worst].dropna()
 w_mu, w_sd, w_gp = gp_map(z, sites)
 fig, axes = plt.subplots(1, 2, figsize=(14, 5.8), gridspec_kw={"wspace": 0.08})
-aqi_field = ix.epa_subindex(w_mu, "pm25")
+aqi_field = ix.epa_subindex(w_mu, "pm25", round_result=False)
 im = show_field(axes[0], aqi_field, viz.AQI_CMAP, viz.AQI_NORM, stations=sites.loc[z.index],
-                svals=ix.epa_subindex(z.to_numpy(), "pm25"))
+                svals=ix.epa_subindex(z.to_numpy(), "pm25"), levels=viz.AQI_BOUNDS)
 viz.aqi_legend(axes[0], bbox=(1.0, -0.08), fontsize=8.5)
 viz.title(axes[0], "AQI from 24 h PM2.5", f"Gaussian-process mean; {len(z)} monitors; maximum "
           f"{z.max():.0f} µg/m³")
@@ -559,7 +574,7 @@ ax.plot(-73.97, 40.75, marker="*", ms=12, color=viz.INK, mec=viz.SURFACE, zorder
 ax.annotate("New York", (-73.97, 40.75), xytext=(6, -12), textcoords="offset points", fontsize=8.5, zorder=7)
 stamp = ax.text(0.01, 0.98, "", transform=ax.transAxes, fontsize=11, fontweight="bold", va="top", zorder=8,
                 bbox=dict(fc=viz.SURFACE, ec="none", alpha=0.85))
-viz.aqi_legend(ax, bbox=(0.5, -0.02), fontsize=7.5)
+viz.aqi_legend(ax, loc="upper center", bbox=(0.5, -0.01), fontsize=7.5)
 ax2 = fig.add_subplot(gs[1])
 local = nyc_series.index.tz_convert("America/New_York")
 ax2.plot(local, nyc_series, color=viz.POLLUTANT_COLORS["pm25"], lw=1.6)
@@ -581,6 +596,7 @@ def draw(i):
     return im, stamp, cursor
 
 
+viz.strip_geo_labels(fig)
 anim = animation.FuncAnimation(fig, draw, frames=range(0, len(frames), 2), interval=160, blit=False)
 gif_path = data.FIGURES / "03_smoke_june2023.gif"
 anim.save(gif_path, writer=animation.PillowWriter(fps=6), dpi=72)
@@ -702,14 +718,14 @@ for name in ["pm25", "o3"]:
         else np.nan).dropna()
 
 fig, axes = plt.subplots(1, 2, figsize=(14, 5.4), gridspec_kw={"wspace": 0.05})
-div = Normalize(-0.1, 0.5)
+all_skill = pd.concat(per_station.values())
+div = Normalize(*all_skill.quantile([0.05, 0.95]).to_numpy())
 for ax, name, lab in [(axes[0], "pm25", "PM2.5"), (axes[1], "o3", "ozone")]:
     viz.draw_basemap(ax, layers, extent=(-76.1, -71.7, 39.45, 42.4))
     s = per_station[name]
     pos = sites.loc[s.index]
     sc = ax.scatter(pos.lon, pos.lat, c=s, cmap=viz.BLUE_CMAP, norm=div, s=70, edgecolor=viz.INK, lw=0.6, zorder=6)
-    viz.title(ax, f"Next-day {lab}: skill against persistence at each monitor",
-              f"2025 to 2026; median skill {100 * s.median():.0f}%")
+    viz.title(ax, f"Next-day {lab}: skill vs persistence", f"each monitor, 2025 to 2026; median {100 * s.median():.0f}%")
 cb = fig.colorbar(sc, ax=axes, fraction=0.02, pad=0.01)
 cb.set_label("MAE skill score", fontsize=9)
 cb.outline.set_visible(False)
@@ -732,23 +748,26 @@ pm_live, _, _ = gp_map(live["pm25"]["median"], sites)
 o3_live, _, _ = gp_map(live["o3"]["median"], sites)
 pm_hi, _, _ = gp_map(live["pm25"]["hi"], sites)
 o3_hi, _, _ = gp_map(live["o3"]["hi"], sites)
-aqi_live = np.fmax(ix.epa_subindex(pm_live, "pm25"), ix.epa_subindex(o3_live, "o3_8h"))
-aqi_hi = np.fmax(ix.epa_subindex(pm_hi, "pm25"), ix.epa_subindex(o3_hi, "o3_8h"))
+aqi_live = np.fmax(ix.epa_subindex(pm_live, "pm25", round_result=False),
+                   ix.epa_subindex(o3_live, "o3_8h", round_result=False))
+aqi_hi = np.fmax(ix.epa_subindex(pm_hi, "pm25", round_result=False), ix.epa_subindex(o3_hi, "o3_8h", round_result=False))
 dominant = np.where(ix.epa_subindex(pm_live, "pm25") >= ix.epa_subindex(o3_live, "o3_8h"), "PM2.5", "ozone")
 print(f"forecast for {target_day:%A %B %d, %Y}: AQI range over land {np.nanmin(aqi_live[LAND]):.0f} to "
       f"{np.nanmax(aqi_live[LAND]):.0f}; upper 80% bound up to {np.nanmax(aqi_hi[LAND]):.0f}; "
       f"dominant pollutant over most of the area: {pd.Series(dominant[LAND]).mode()[0]}")
 
 fig, axes = plt.subplots(1, 2, figsize=(14, 5.6), gridspec_kw={"wspace": 0.08})
-aqi_norm = Normalize(0, 300)
+aqi_norm = Normalize(0, 300)  # the AQI ramp is anchored on the official colours over 0-300
 for ax, field, ttl, sub_ in [(axes[0], aqi_live, "Most likely AQI", "median forecast"),
                              (axes[1], aqi_hi, "Pessimistic AQI", "upper bound of the 80% interval")]:
     im = show_field(ax, field, viz.AQI_CONT_CMAP, aqi_norm)
     cs = ax.contour(LON, LAT, field, levels=[25, 50, 75, 100], colors=viz.INK_2, linewidths=0.7, zorder=4.5)
     ax.clabel(cs, fontsize=7.5, fmt="%d")
     viz.title(ax, ttl, sub_)
-cb = fig.colorbar(im, ax=axes, fraction=0.02, pad=0.01, ticks=[0, 50, 100, 150, 200, 300])
-cb.ax.set_yticklabels(["0", "50 Good", "100 Moderate", "150 USG", "200 Unhealthy", "300"], fontsize=8)
+cb = fig.colorbar(im, ax=axes, fraction=0.02, pad=0.01, ticks=[25, 75, 125, 175, 250])
+cb.ax.set_yticklabels(["Good", "Moderate", "USG", "Unhealthy", "Very unhealthy"], fontsize=8.5)
+for b_ in (50, 100, 150, 200):
+    cb.ax.axhline(b_, color=viz.SURFACE, lw=1.2)
 cb.set_label("AQI", fontsize=9)
 cb.outline.set_visible(False)
 viz.fig_title(fig, f"Forecast for {target_day:%A, %B %d, %Y}",
@@ -781,7 +800,7 @@ pop = boroughs.set_index("borough").population_2020
 summary = pd.DataFrame({"mean PM2.5 2025": bor.mean(), "days > 15 ug/m3": (bor > 15).sum(),
                         "population 2020": pop})
 summary["person-days > WHO (millions)"] = summary["days > 15 ug/m3"] * summary["population 2020"] / 1e6
-city_mean = np.average(summary["mean PM2.5 2025"], weights=summary["population 2020"])
+city_mean = float(np.average(summary["mean PM2.5 2025"], weights=summary["population 2020"]))
 display(summary.sort_values("mean PM2.5 2025", ascending=False).round(2))
 print(f"population-weighted PM2.5 2025: {city_mean:.2f} ug/m3 "
       f"({city_mean / ix.who_guideline('pm25', 'annual'):.1f} x the WHO annual guideline of 5 ug/m3)")
@@ -862,13 +881,45 @@ print("saved maps/nyc_air_quality_map.html")
 # %% [markdown]
 # ## 9 · Take-aways
 #
-# * PM2.5 and ozone are regional pollutants with ranges of tens of km, so 60 monitors can
-#   map them; NO2 is local and needs the dense street-level surveys that AirNow lacks.
-# * A learned interpolator (RFSI-LightGBM) beats IDW, kriging and Gaussian processes under
-#   leave-one-station-out validation, most of all for isolated locations.
-# * The maps reveal the two faces of urban air: particles peak along traffic corridors,
-#   ozone peaks downwind because fresh NO2 titrates it in the core.
-# * Probabilistic maps turn sparse monitors into an expected number of exceedance days at
-#   every address, and population weighting turns them into person-days of exposure.
+# * PM2.5 and ozone are regional pollutants whose contrasts extend over hundreds of km,
+#   so 60 monitors can map them; NO2 is local and needs the dense street-level surveys
+#   that AirNow lacks.
+# * Under a fair spatial cross-validation, geostatistics remains the reference: the
+#   Gaussian process is the best PM2.5 interpolator, and kriging corrected by a boosted
+#   residual model is the best for ozone. A purely learned interpolator does not beat them.
+# * The maps show the two faces of urban air: particles peak in and around the urban
+#   core, ozone peaks downwind because fresh NO emissions titrate it in the core.
+# * Probabilistic maps turn sparse monitors into an expected number of exceedance days
+#   at every address, and population weighting turns them into person-days of exposure.
 # * The smoke animation shows why local models miss smoke onsets: the plume is visible
 #   hundreds of km upstream a day before it reaches the city.
+
+# %% [markdown]
+# ## 10 · Key results
+#
+# Saved to `data/processed/results_03.json` for the report.
+
+# %%
+import json  # noqa: E402
+
+bt = bench_tab.set_index(["pollutant", "method"])
+best_oz = bt.loc["o3"].RMSE.idxmin()
+res03 = {
+    "n_pm": int(PM.shape[1]), "n_o3": int(O3.shape[1]),
+    "vg_pm_nugget": round(100 * vg["pm25"][1]["nugget_frac"]), "vg_o3_nugget": round(100 * vg["o3"][1]["nugget_frac"]),
+    "geo_pm_gp_rmse": round(float(bt.loc[("pm25", "Gaussian process"), "RMSE"]), 2),
+    "geo_pm_gp_r2": round(float(bt.loc[("pm25", "Gaussian process"), "R2"]), 3),
+    "geo_pm_best": bt.loc["pm25"].RMSE.idxmin(), "geo_oz_best": best_oz,
+    "geo_oz_best_rmse": round(float(bt.loc[("o3", best_oz), "RMSE"]), 2),
+    "geo_oz_best_r2": round(float(bt.loc[("o3", best_oz), "R2"]), 3),
+    "geo_rfsi_pm_rmse": round(float(bt.loc[("pm25", "RFSI-LightGBM"), "RMSE"]), 2),
+    "pop_pm": round(city_mean, 2), "pop_ratio": round(city_mean / ix.who_guideline("pm25", "annual"), 1),
+    "panel_fc": {r_["pollutant"]: {k: round(float(v), 3) for k, v in r_.items() if k != "pollutant"} for r_ in fc_rows},
+    "boroughs": {b: {"pm": round(float(row["mean PM2.5 2025"]), 2), "days": int(row["days > 15 ug/m3"]),
+                     "person_days_m": round(float(row["person-days > WHO (millions)"]), 1)}
+                 for b, row in summary.iterrows()},
+    "live_target_day": f"{target_day:%Y-%m-%d}", "live_aqi_min": int(np.nanmin(aqi_live[LAND])),
+    "live_aqi_max": int(np.nanmax(aqi_live[LAND])),
+}
+(data.DATA / "processed" / "results_03.json").write_text(json.dumps(res03, indent=1))
+display(pd.Series({k: v for k, v in res03.items() if not isinstance(v, dict)}))

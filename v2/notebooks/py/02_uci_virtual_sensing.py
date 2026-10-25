@@ -117,7 +117,8 @@ rf = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1).fit(d[d
                                                                              d[d.index < cut].co_gt)
 rows.append({"protocol": "clean data, chronological split",
              **fc.regression_scores(d[d.index >= cut].co_gt, rf.predict(d[d.index >= cut][clean_cols]))})
-display(pd.DataFrame(rows).set_index("protocol").round(3))
+protocols = pd.DataFrame(rows).set_index("protocol")
+display(protocols.round(3))
 
 # %%
 fig, axes = plt.subplots(1, 2, figsize=(12.5, 3.8), gridspec_kw={"wspace": 0.25})
@@ -156,7 +157,8 @@ plt.show()
 bz = u[["c6h6_gt", "s2_nmhc"]].dropna()
 coef = np.polyfit(bz.s2_nmhc, bz.c6h6_gt, 4)
 resid = bz.c6h6_gt - np.polyval(coef, bz.s2_nmhc)
-print(f"benzene vs polynomial of S2: R2 = {1 - resid.var() / bz.c6h6_gt.var():.5f}, residual sd = {resid.std():.3f} ug/m3")
+bz_r2 = 1 - resid.var() / bz.c6h6_gt.var()
+print(f"benzene vs polynomial of S2: R2 = {bz_r2:.5f}, residual sd = {resid.std():.3f} ug/m3")
 
 # %% [markdown]
 # ## 2 · Data availability
@@ -379,7 +381,8 @@ ref_lvl, virt_lvl = ix.caqi_level(aq.caqi[m]), ix.caqi_level(virt_caqi[m])
 conf = pd.crosstab(pd.Series(ref_lvl, name="reference"), pd.Series(virt_lvl, name="virtual"), normalize="index") * 100
 conf.index = [ix.CAQI_LEVELS[i] for i in conf.index]
 conf.columns = [ix.CAQI_LEVELS[i] for i in conf.columns]
-print(f"exact level: {np.mean(ref_lvl == virt_lvl):.1%}, within one level: {np.mean(np.abs(ref_lvl - virt_lvl) <= 1):.1%}")
+lc_exact, lc_one = np.mean(ref_lvl == virt_lvl), np.mean(np.abs(ref_lvl - virt_lvl) <= 1)
+print(f"exact level: {lc_exact:.1%}, within one level: {lc_one:.1%}")
 
 fig, ax = plt.subplots(figsize=(5.8, 4.6))
 im = ax.imshow(conf.to_numpy(), cmap=viz.BLUE_CMAP, vmin=0, vmax=100)
@@ -593,3 +596,31 @@ plt.show()
 # * The hourly CAQI forecast beats persistence, yesterday's value and the hour-of-week
 #   climatology at every lead time from 1 to 24 hours, and conformal calibration restores
 #   the nominal coverage of its intervals.
+
+# %% [markdown]
+# ## 9 · Key results
+#
+# Saved to `data/processed/results_02.json` for the report.
+
+# %%
+import json  # noqa: E402
+
+piv = vs.pivot_table(index=["target", "model"], columns="scheme", values="R2")[list(SCHEMES)]
+gp_ = gaps.pivot_table(index="method", columns="target", values="MAE")
+res02 = {
+    "v1_rf_mae": round(float(protocols.loc["v1 as published", "MAE"]), 1),
+    "v1_rf_r2": round(float(protocols.loc["v1 as published", "R2"]), 3),
+    "random_r2": round(float(protocols.loc["clean data, random split", "R2"]), 3),
+    "chrono_r2": round(float(protocols.loc["clean data, chronological split", "R2"]), 3),
+    "fill_value": round(float(fill_value), 1), "benzene_r2": round(float(bz_r2), 5),
+    "lowcost_exact": round(100 * float(lc_exact), 0), "lowcost_one": round(100 * float(lc_one), 0),
+    "vs_r2": {f"{t}|{m}": {k: round(float(v), 2) for k, v in row.items()} for (t, m), row in piv.iterrows()},
+    "gap_mae": {m: {t: round(float(v), 2) for t, v in row.items()} for m, row in gp_.iterrows()},
+    "forecast": {int(h): {"mae": round(float(row["MAE median"]), 2),
+                          "skill_pers": round(100 * (1 - row["MAE median"] / row["MAE persistence"]), 0),
+                          "skill_clim": round(100 * (1 - row["MAE median"] / row["MAE climatology"]), 0),
+                          "cov": round(100 * float(row["coverage 80%"]), 0),
+                          "cov_raw": round(100 * float(row["coverage raw"]), 0)} for h, row in fscores.iterrows()},
+}
+(data.DATA / "processed" / "results_02.json").write_text(json.dumps(res02, indent=1))
+display(pd.Series({k: v for k, v in res02.items() if not isinstance(v, dict)}))
